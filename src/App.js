@@ -1,16 +1,15 @@
-// src/App.js
 import React from 'react';
-import DashboardHR from './konten/dashboardHR'; // Pastikan ini benar
-import { AttendanceProvider } from './AttendanceContext'; // Contoh penggunaan context
-import DashboardPe from './konten/dashboardPe';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import LandingPage from './pages/landingPage'; 
 
-function App() {
-    return (
-        <AttendanceProvider>
-            <DashboardHR />
-            <DashboardPe/>
-        </AttendanceProvider>
-    );
-}
+const App = () => {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<LandingPage/>} />
+      </Routes>
+    </Router>
+  );
+};
 
 export default App;

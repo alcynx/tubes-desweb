@@ -20,7 +20,7 @@ const HeaderHR =() => {
                             <MdNotificationsActive style={{ color: '#417D7A', fontSize: '32px' }} />
                         </button>
                     </div>
-                    <img src="/img/PhotoHr.jpeg" alt="Profile" className="w-10 h-10 rounded-full ml-6" />
+                    <img src="/images/PhotoHr.jpeg" alt="Profile" className="w-10 h-10 rounded-full ml-6 object-contain" />
                 </div>
             </header>
         </>
