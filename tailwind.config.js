@@ -11,7 +11,7 @@ module.exports = {
         secondary: '#417D7A',
         tertiary:'#16423C',
         quaternary:'#EDE6DB',
-
+        white:'#FFFF',
       },
       fontFamily: {
         poppins: ['Poppins', 'sans-serif'],

@@ -1,7 +1,4 @@
-// src/pages/Dashboard.js
 import React from 'react';
-import { Link } from 'react-router-dom';
-// import Footer from '../components/footer';
 import Header from '../components/header-landingpage'
 import Home from '../components/home'
 import Fitur from '../components/fitur';

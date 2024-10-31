@@ -1,10 +1,15 @@
-// src/components/HeroSection.js
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
+  const navigate = useNavigate();
+
+  const handleMasukClick = () => {
+    navigate('/login');
+  };
+
   return (
     <div className="flex items-center justify-between bg-white min-h-screen  px-8 py-12">
-      {/* Left Section: Text Content */}
       <div className="max-w-md font-poppins">
         <h1 className="text-6xl text-tertiary font-bold -mt-2 mb-6 px-6 ml-6">STAFF.IO</h1>
         <p className="text-tertiary text-[15px] font-medium leading-relaxed mb-6 px-6 ml-6">
@@ -12,7 +17,9 @@ const Home = () => {
           Dengan fitur yang intuitif, Anda dapat memantau kehadiran, cuti, dan lembur tanpa repot.
         </p>
         <span className="flex justify-center">
-          <button className="bg-secondary text-white rounded-full px-6 py-3 w-[222px] text-lg shadow-md hover:bg-quaternary hover:text-tertiary hover:border-2 hover:border-tertiary transition duration-300">
+          <button className="bg-secondary text-white rounded-full px-6 py-3 w-[222px] text-lg shadow-md hover:bg-quaternary hover:text-tertiary hover:border-2 hover:border-tertiary transition duration-300"
+            onClick={handleMasukClick}
+          >
             Masuk
           </button>
         </span>
