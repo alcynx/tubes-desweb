@@ -1,6 +1,6 @@
 import React from 'react';
 
-const announcements = [
+export const announcements = [
   {
     title: 'Absensi kini telah baru !',
     description: 'Pengoptimalan kini dilakukan guna menambah kemudahan pegawai',
