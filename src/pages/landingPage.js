@@ -1,12 +1,12 @@
 import React from 'react';
-import Header from '../components/header-landingpage'
-import Home from '../components/home'
-import Fitur from '../components/fitur';
-import Pengumuman from '../components/pengumuman';
-import TentangKami from '../components/tentang-kami';
-import Footer from '../components/footer'
+import Header from '../components/LandingPage/header-landingpage'
+import Home from '../components/LandingPage/home'
+import Fitur from '../components/LandingPage/fitur';
+import Pengumuman from '../components/LandingPage/pengumuman';
+import TentangKami from '../components/LandingPage/tentang-kami';
+import Footer from '../components/LandingPage/footer'
 
-const landingPage = () => {
+const LandingPage = () => {
   return (
     <div>
     <Header />
@@ -29,4 +29,4 @@ const landingPage = () => {
   );
 };
 
-export default landingPage;
+export default LandingPage;

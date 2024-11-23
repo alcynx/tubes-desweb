@@ -1,18 +1,23 @@
+// src/App.js
+
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import LandingPage from './pages/landingPage'; 
-import Login from './pages/login';
-import DashboardHR from './pages/dashboardHR'; // Pastikan path-nya benar
+import DashboardHR from './pages/dashboardHR';
 import DashboardPe from './pages/dashboardPe';
+import Login from './pages/login';
+import LandingPage from './pages/landingPage'
+import DataPegawai from './pages/datapegawai'
+
 
 const App = () => {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<LandingPage/>} />
-        <Route path="/login" element={<Login/>} />
-        <Route path="/dashboardHR" element={<DashboardHR />} />
+        <Route path="/Login" element={<Login/>} />
+        <Route path="/dashboardHr" element={<DashboardHR />} />
         <Route path="/dashboardPe" element={<DashboardPe />} />
+        <Route path="/datapegawai" element={<DataPegawai />} />
       </Routes>
     </Router>
   );

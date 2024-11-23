@@ -7,7 +7,7 @@ const HeaderHR =() => {
     return (
         <>
             <header className="flex justify-between items-center bg-white p-6 shadow-md">
-                <h1 className="text-xl font-normal">Hi, Zielielie</h1>
+                <h1 className="text-xl font-normal text-[#417D7A]">Hi, Zielielie</h1>
                 <div className="flex items-center">
                     <div className="flex items-center space-x-8 mr-32">
                         <button className="text-gray-500">

@@ -1,12 +1,12 @@
 import React from "react";
-import HeaderPegawai from "../components/HeaderPegawai";
-import SidebarPegawai from "../components/SidebarPegawai";
-import StatistikChart from "../components/StatistikPegawai";
-import RealTimeClockWithDay from "../components/time";
-import UpdateEmployeeAttendanceButton from "../components/attendanceButtonPegawai";
-import AttendanceTable from "../components/TabelPresensiPegawai"; 
-import { useEmployeeAttendance } from '../components/attendanceData';
-import { announcements } from '../components/pengumuman';
+import HeaderPegawai from "../components/DashboardPegawai/HeaderPegawai";
+import SidebarPegawai from "../components/DashboardPegawai/SidebarPegawai";
+import StatistikChart from "../components/DashboardPegawai/StatistikPegawai";
+import RealTimeClockWithDay from "../components/DashboardHr/time";
+import UpdateEmployeeAttendanceButton from "../components/DashboardPegawai/attendanceButtonPegawai";
+import AttendanceTable from "../components/DashboardPegawai/TabelPresensiPegawai"; 
+import { useEmployeeAttendance } from '../components/DashboardPegawai/attendanceData';
+import { announcements } from '../components/DashboardPegawai/pengumuman';
 
 function DashboardPe() {
     // Mengambil data kehadiran dari konteks

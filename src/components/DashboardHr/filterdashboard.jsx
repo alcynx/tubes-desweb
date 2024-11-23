@@ -12,7 +12,7 @@ const FilterHr = ({ onFilterChange }) => {
     };
 
     return (
-        <div className="relative">
+        <div className="relative text-[#16423C]">
             <select
                 value={selectedFilter}
                 onChange={handleFilterSelect}

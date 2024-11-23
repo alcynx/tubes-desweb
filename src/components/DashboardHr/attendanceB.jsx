@@ -1,23 +1,26 @@
+
 import React, { useState } from 'react';
-import { useAttendance } from '../AttendanceContext';
-import { formatDate } from '../formatdate'; // Pastikan untuk mengimpor formatDate
+import { useAttendance } from "./AttendanceContext";
+import { formatDate } from "./formatdate";
+
 
 const UpdateAttendanceButton = () => {
-    const { setAttendanceData } = useAttendance();
+    const { attendanceData, setAttendanceData } = useAttendance();
     const [isCheckedIn, setIsCheckedIn] = useState(false);
-    const [currentEntry, setCurrentEntry] = useState(null);
 
     const handleAttendanceUpdate = () => {
         const now = new Date();
-        const currentDate = formatDate(now); // Gunakan formatDate untuk konsistensi
-        const currentTime = now.getHours().toString().padStart(2, '0') + ':' + now.getMinutes().toString().padStart(2, '0');
-        
+        const currentDate = formatDate(now);
+        const currentTime = `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`;
+
         let status;
         const currentHour = now.getHours();
         const currentMinute = now.getMinutes();
 
         if (currentHour === 8 && currentMinute >= 0 && currentMinute < 30) {
             status = 'Hadir';
+        } else if (currentHour == 8 && currentMinute >= 30) {
+            status = 'Terlambat';
         } else if (currentHour > 8) {
             status = 'Terlambat';
         } else {
@@ -25,7 +28,7 @@ const UpdateAttendanceButton = () => {
         }
 
         const newEntry = {
-            date: currentDate, // Tanggal sudah diformat
+            date: currentDate,
             name: 'Lattema Lie',
             role: 'Project Manager',
             status,
@@ -35,36 +38,34 @@ const UpdateAttendanceButton = () => {
         };
 
         setAttendanceData(prevData => [...prevData, newEntry]);
-        console.log("Updated attendance data:", newEntry);
         setIsCheckedIn(true);
-        setCurrentEntry(newEntry);
     };
 
     const handleCheckOutUpdate = () => {
         const now = new Date();
-        const checkOutTime = now.getHours().toString().padStart(2, '0') + ':' + now.getMinutes().toString().padStart(2, '0');
+        const checkOutTime = `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`;
         
         let overtime = '-';
         const checkOutHour = now.getHours();
 
-        // Aturan check-out
         if (checkOutHour > 17) {
-            const overtimeHours = checkOutHour - 17; // Hitung jam lembur
+            const overtimeHours = checkOutHour - 17;
             overtime = `${overtimeHours} Jam`;
         }
 
-        // Update entry yang sudah ada
-        const updatedEntry = {
-            ...currentEntry,
-            keluar: checkOutTime,
-            lembur: overtime,
-        };
-
         setAttendanceData(prevData => {
-            const updatedData = prevData.map(entry =>
-                entry.name === currentEntry.name && entry.date === currentEntry.date ? updatedEntry : entry
-            );
-            console.log("Updated attendance data on check-out:", updatedData);
+            // Cari entry terakhir yang sesuai kriteria
+            const updatedData = prevData.map((entry, index, arr) => {
+                if (index === arr.findLastIndex(e => e.name === 'Lattema Lie' && e.keluar === '-')) {
+                    return {
+                        ...entry,
+                        keluar: checkOutTime,
+                        lembur: overtime,
+                    };
+                }
+                return entry;
+            });
+
             return updatedData;
         });
 

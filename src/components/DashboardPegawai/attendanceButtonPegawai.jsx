@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { useEmployeeAttendance } from '../components/attendanceData'; // Ganti dengan nama konteks yang sesuai
-import { formatDate } from '../formatdate'; // Pastikan untuk mengimpor formatDate
+import { useEmployeeAttendance } from './attendanceData'; // Ganti dengan nama konteks yang sesuai
+import { formatDate } from '../DashboardHr/formatdate'; // Pastikan untuk mengimpor formatDate
 
 const UpdateEmployeeAttendanceButton = () => {
     const { setEmployeeAttendanceData } = useEmployeeAttendance(); // Ganti dengan hook yang sesuai
