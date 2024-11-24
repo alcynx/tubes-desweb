@@ -2,22 +2,22 @@ import React from 'react';
 
 const AttendanceTablePegawai = ({ attendanceData }) => {
     return (
-        <table className="w-full text-left border-collapse rounded-lg overflow-hidden">
-            <thead className="bg-greenstat text-white">
+        <table className="w-full text-left border-collapse border border-secondary overflow-hidden">
+            <thead className="bg-secondary text-white text-center">
                 <tr>
-                    <th className="p-3">Tanggal</th>
-                    <th className="p-3">Status</th>
-                    <th className="p-3">Lembur</th>
+                    <th className="p-3 font-normal">Tanggal</th>
+                    <th className="p-3 font-normal">Status</th>
+                    <th className="p-3 font-normal">Lembur</th>
                 </tr>
             </thead>
             <tbody>
                 {attendanceData.map((item, index) => (
-                    <tr key={index} className="even:bg-gray-100">
-                        <td className="p-3 border-b">{item.date}</td>
-                        <td className={`p-3 border-b ${item.status === 'Terlambat' ? 'text-yellowstat' : item.status === 'Absen' ? 'text-redstat' : 'text-greenstat'}`}>
+                    <tr key={index} className="">
+                        <td className="p-3 text-center">{item.date}</td>
+                        <td className={`p-3 text-left ${item.status === 'Terlambat' ? 'text-yellow-500' : item.status === 'Absen' ? 'text-redstat' : 'text-greenstat'}`}>
                             {item.status}
                         </td>
-                        <td className="p-3 border-b">{item.lembur ? item.lembur : '-'}</td>
+                        <td className="p-3 text-center">{item.lembur ? item.lembur : '-'}</td>
                     </tr>
                 ))}
             </tbody>

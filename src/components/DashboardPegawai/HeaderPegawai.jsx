@@ -5,8 +5,8 @@ import { MdNotificationsActive } from "react-icons/md";
 const HeaderPegawai =() => {
     return (
         <>
-            <header className="flex justify-between items-center bg-white p-6 shadow-md">
-                <h1 className="text-xl font-normal">Hi, Zielielie</h1>
+            <header className="flex justify-between items-center bg-white p-6">
+                <h1 className="text-xl font-normal font-poppins text-secondary">Hi, Zielielie</h1>
                 <div className="flex items-center">
                     <div className="flex items-center space-x-12 mr-10">
                         <button className="text-gray-500">

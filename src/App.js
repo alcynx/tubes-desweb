@@ -11,6 +11,8 @@ import FormPengajuan from './pages/formMengajukan';
 import Pengajuan from './pages/daftarpengajuan';
 import AnnouncementsPage from './pages/dashboardPengumuman'
 import PublishedAnnouncementsPage from './pages/PublishedAnnouncementsPage';
+import PresensiPegawai from './pages/presensiPegawai';
+import PengumumanPegawai from './pages/pengumumanPegawai';
 
 const App = () => {
   return (
@@ -25,6 +27,8 @@ const App = () => {
         <Route path="/daftarpengajuan" element={<Pengajuan />} />
         <Route path="/dashboardPengumuman" element={<AnnouncementsPage />} />
         <Route path="/publikasi" element={<PublishedAnnouncementsPage />} />
+        <Route path="/presensiPegawai" element={<PresensiPegawai />} />
+        <Route path="/pengumumanPegawai" element={<PengumumanPegawai />} />
       </Routes>
     </Router>
   );

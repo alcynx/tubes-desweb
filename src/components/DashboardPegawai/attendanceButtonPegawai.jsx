@@ -16,13 +16,13 @@ const UpdateEmployeeAttendanceButton = () => {
 
         // Tentukan status kehadiran
         if (currentHour === 8 && currentMinute >= 0 && currentMinute < 30) {
-            status = 'Hadir';
-        } else if (currentHour > 8) {
-            status = 'Terlambat';
+            status = 'Hadir'; // Jika waktu antara 08:00 - 08:29
+        } else if (currentHour > 8 || (currentHour === 8 && currentMinute >= 30)) {
+            status = 'Terlambat'; // Jika jam lebih dari 08:00 atau sudah lewat 08:30
         } else {
-            status = 'Absen';
+            status = 'Absen'; // Jika waktu sebelum jam 08:00
         }
-
+        
         const newEntry = {
             date: currentDate, // Tanggal sudah diformat
             status,
@@ -67,18 +67,18 @@ const UpdateEmployeeAttendanceButton = () => {
         <div>
             <button 
                 onClick={handleAttendanceUpdate} 
-                className="p-2 rounded-lg border border-[#417D7A] m-2" 
+                className="bg-tertiary text-primary font-poppins rounded-full p-2 w-[150px] shadow-md hover:font-bold transition duration-300" 
                 disabled={isCheckedIn}
             >
-                Update Kehadiran Masuk
+                Jam Masuk
             </button>
 
             <button 
                 onClick={handleCheckOutUpdate} 
-                className="p-2 rounded-lg border border-[#417D7A] m-2" 
+                className="bg-primary text-tertiary font-poppins rounded-full p-2 w-[150px] m-2 shadow-md hover:font-bold transition duration-300" 
                 disabled={!isCheckedIn}
             >
-                Update Kehadiran Keluar
+                Jam Keluar
             </button>
         </div>
     );

@@ -2,21 +2,31 @@ import React from 'react';
 
 export const announcements = [
   {
-    title: 'Absensi kini telah baru !',
-    description: 'Pengoptimalan kini dilakukan guna menambah kemudahan pegawai',
-    image: '/images/laporan-absensi.png', // Path gambar
+    title: "Absensi kini telah baru!",
+    description: "Pengoptimalan kini dilakukan guna menambah kemudahan pegawai.",
+    image: "/images/laporan-absensi.png",
+    date: "30/05/24",
+    category: "Kebijakan",
+    isNew: true,
   },
   {
-    title: 'Peraturan baru jam kerja karyawan.',
-    description: 'Jam kerja karyawan ini lebih cepat dari biasanya, dimulai dari pukul 8:00',
-    image: '/images/peraturan.png', // Path gambar
+    title: "Peraturan baru jam kerja karyawan.",
+    description: "Jam kerja karyawan ini lebih cepat dari biasanya, dimulai dari pukul 8:00.",
+    image: "/images/peraturan.png",
+    date: "30/05/24",
+    category: "Kebijakan",
+    isNew: true,
   },
   {
-    title: 'Mekanisme pengajuan dari pegawai perusahaan',
-    description: 'Mekanisme pengajuan dari pegawai dibuat lebih fleksibel dan mudah',
-    image: '/images/mekanisme.png', // Path gambar
+    title: "Mekanisme pengajuan dari pegawai perusahaan",
+    description: "Mekanisme pengajuan dari pegawai dibuat lebih fleksibel dan mudah.",
+    image: "/images/mekanisme.png",
+    date: "30/05/24",
+    category: "Umum",
+    isNew: true,
   },
 ];
+
 
 const AnnouncementsSection = () => {
   return (
