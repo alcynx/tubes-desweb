@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState } from 'react';
 
 // Buat konteks
-const AttendanceContext = createContext();
+const AttendanceContext = createContext(null);
 
 // Provider untuk konteks
 export const AttendanceProvider = ({ children }) => {

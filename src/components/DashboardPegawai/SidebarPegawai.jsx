@@ -16,7 +16,7 @@ const SidebarPegawai = () => {
                         <a href="#" className="text-gray-600 block p-4 text-center rounded-lg hover:bg-green-200 hover:text-green-600">PRESENSI</a>
                     </li>
                     <li>
-                        <a href="#" className="text-gray-600 block p-4 text-center rounded-lg hover:bg-green-200 hover:text-green-600">PENGAJUAN</a>
+                        <a href="/FormPengajuan" className="text-gray-600 block p-4 text-center rounded-lg hover:bg-green-200 hover:text-green-600">PENGAJUAN</a>
                     </li>
                     <li>
                         <a href="#" className="text-gray-600 block p-4 text-center rounded-lg hover:bg-green-200 hover:text-green-600">PENGUMUMAN</a>

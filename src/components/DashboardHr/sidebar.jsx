@@ -21,7 +21,7 @@ const Sidebar = () => {
                     </li>
                     <li>
                         <NavLink 
-                            to="/DashboardPe" 
+                            to="/" 
                             className="text-[#16423C] block p-4 text-center" 
                             activeClassName="font-bold text-[#16423C]"
                         >
@@ -30,7 +30,7 @@ const Sidebar = () => {
                     </li>
                     <li>
                         <NavLink 
-                            to="/pengajuan" 
+                            to="/daftarpengajuan" 
                             className="text-[#16423C] block p-4 text-center" 
                             activeClassName="font-bold"
                         >
@@ -48,11 +48,20 @@ const Sidebar = () => {
                     </li>
                     <li>
                         <NavLink 
-                            to="/pengumuman" 
+                            to="/dashboardPengumuman" 
                             className="text-[#16423C] block p-4 text-center" 
                             activeClassName="font-bold"
                         >
                             PENGUMUMAN
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink 
+                            to="/publikasi" 
+                            className="text-[#16423C] block p-4 text-center" 
+                            activeClassName="font-bold"
+                        >
+                            PUBLIKASI
                         </NavLink>
                     </li>
                 </ul>

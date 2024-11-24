@@ -5,9 +5,12 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import DashboardHR from './pages/dashboardHR';
 import DashboardPe from './pages/dashboardPe';
 import Login from './pages/login';
-import LandingPage from './pages/landingPage'
-import DataPegawai from './pages/datapegawai'
-
+import LandingPage from './pages/landingPage';
+import DataPegawai from './pages/datapegawai';
+import FormPengajuan from './pages/formMengajukan';
+import Pengajuan from './pages/daftarpengajuan';
+import AnnouncementsPage from './pages/dashboardPengumuman'
+import PublishedAnnouncementsPage from './pages/PublishedAnnouncementsPage';
 
 const App = () => {
   return (
@@ -18,6 +21,10 @@ const App = () => {
         <Route path="/dashboardHr" element={<DashboardHR />} />
         <Route path="/dashboardPe" element={<DashboardPe />} />
         <Route path="/datapegawai" element={<DataPegawai />} />
+        <Route path="/formPengajuan" element={<FormPengajuan />} />
+        <Route path="/daftarpengajuan" element={<Pengajuan />} />
+        <Route path="/dashboardPengumuman" element={<AnnouncementsPage />} />
+        <Route path="/publikasi" element={<PublishedAnnouncementsPage />} />
       </Routes>
     </Router>
   );
