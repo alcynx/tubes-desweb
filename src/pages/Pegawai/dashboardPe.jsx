@@ -1,15 +1,14 @@
 import React from "react";
-import HeaderPegawai from "../components/DashboardPegawai/HeaderPegawai";
-import SidebarPegawai from "../components/DashboardPegawai/SidebarPegawai";
-import StatistikChart from "../components/DashboardPegawai/StatistikPegawai";
-import RealTimeClockWithDay from "../components/DashboardHr/time";
-import UpdateEmployeeAttendanceButton from "../components/DashboardPegawai/attendanceButtonPegawai";
-import AttendanceTable from "../components/DashboardPegawai/TabelPresensiPegawai"; 
-import { useEmployeeAttendance } from '../components/DashboardPegawai/attendanceData';
-import { announcements } from '../components/LandingPage/pengumuman';
+import HeaderPegawai from "../../components/DashboardPegawai/HeaderPegawai";
+import SidebarPegawai from "../../components/DashboardPegawai/SidebarPegawai";
+import StatistikChart from "../../components/DashboardPegawai/StatistikPegawai";
+import RealTimeClockWithDay from "../../components/DashboardHr/time";
+import UpdateEmployeeAttendanceButton from "../../components/DashboardPegawai/attendanceButtonPegawai";
+import AttendanceTable from "../../components/DashboardPegawai/TabelPresensiPegawai"; 
+import { useEmployeeAttendance } from '../../components/DashboardPegawai/attendanceData';
+import { announcements } from '../../components/LandingPage/pengumuman';
 
 function DashboardPe() {
-    // Mengambil data kehadiran dari konteks
     const { employeeAttendanceData } = useEmployeeAttendance();
     const data = [
         { id: 'Hadir', label: 'Hadir', value: employeeAttendanceData.filter(item => item.status === 'Hadir').length, color: '#417D7A' },
@@ -26,7 +25,8 @@ function DashboardPe() {
                     <HeaderPegawai />
                     
                     {/* Bagian Statistik */}
-                    <section className="p-6 rounded-lg bg-white ">
+                    <section className="p-6 rounded-lg bg-white">
+                        {/* Header */}
                         <div className="flex justify-between items-center mb-4">
                             <h2 className="text-2xl font-bold font-poppins text-tertiary">STATISTIK</h2>
                             <h3 className="text-base font-regular">
@@ -34,16 +34,19 @@ function DashboardPe() {
                             </h3>
                         </div>
 
-                        <div className="flex items-center space-x-8">
-                            {/* Bagian StatistikChart */}
-                            <StatistikChart data={data} />
+                        {/* Bagian Utama dengan Grid */}
+                        <div className="grid grid-cols-3 gap-6 items-center">
+                            {/* Bagian Chart dan Card Statistik */}
+                            <div className="col-span-2">
+                                <StatistikChart data={data} />
+                            </div>
 
-                            {/* Bagian Presensi Harian */}
-                            <div className="flex flex-col items-start space-y-4 pl-24">
-                                <h3 className="text-lg font-bold font-poppins text-tertiary pl-20">
+                            {/* Bagian Tombol Presensi Harian */}
+                            <div className="flex flex-col items-center space-y-4">
+                                <h3 className="text-lg font-bold font-poppins text-tertiary">
                                     Mulai Untuk Presensi Harian
                                 </h3>
-                                <div className="pl-16">
+                                <div>
                                     <UpdateEmployeeAttendanceButton />
                                 </div>
                             </div>
@@ -62,7 +65,7 @@ function DashboardPe() {
                             <h3 className="text-xl font-bold font-poppins text-tertiary mb-4">
                                 PENGUMUMAN
                             </h3>
-                            {announcements.map((announcement, index) => (
+                            {announcements.slice(0, 2).map((announcement, index) => (
                                 <div key={index} className="mb-4 p-4 bg-gray-50 rounded-lg shadow-sm border border-greenstat">
                                     <h4 className="font-poppins font-bold text-tertiary mb-1">{announcement.title}</h4>
                                     <p className="font-poppins text-tertiary text-sm mb-2">{announcement.description}</p>
@@ -73,7 +76,7 @@ function DashboardPe() {
                                 </div>
                             ))}
                             <div className="flex justify-end mt-4">
-                                <a href="/pengumuman" className="text-sm font-poppins font-bold text-tertiary hover:underline">
+                                <a href="/PengumumanPegawai" className="text-sm font-poppins font-bold text-tertiary hover:underline">
                                     Selengkapnya &gt;&gt;
                                 </a>
                             </div>

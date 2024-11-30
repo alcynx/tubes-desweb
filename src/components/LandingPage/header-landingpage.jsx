@@ -4,7 +4,7 @@ function Navbar() {
   const [activeLink, setActiveLink] = useState('#home'); // Default active link
 
   return (
-    <nav className="flex bg-primary p-3 justify-between items-center">
+    <nav className="flex bg-primary p-3 justify-between items-center sticky top-0 z-10">
       <div className="flex-shrink-0">
         {/* Menambahkan flex-shrink-0 agar logo tidak mengecil */}
         <img src="/images/logo-dark.png" alt="logo" className="h-[88px] p-3" />

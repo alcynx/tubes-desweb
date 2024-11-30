@@ -26,9 +26,12 @@ const StatistikChart = ({ data }) => {
       </div>
 
       {/* Bagian Card Statistik */}
-      <div className="grid grid-cols-2 gap-4 ml-16 my-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mx-auto my-4">
         {data.map((item) => (
-          <div key={item.id} className={`flex items-center p-4 rounded-lg shadow w-36 h-16 text-center  ${item.id === 'Hadir' ? 'bg-greenstat text-white' : item.id === 'Izin/Sakit' ? 'bg-bluestat text-white' : item.id === 'Terlambat' ? 'bg-yellowstat text-white' : 'bg-redstat text-white'}`}>
+          <div
+            key={item.id}
+            className={`flex items-center p-4 rounded-lg shadow w-36 h-16 text-center mx-auto ${item.id === 'Hadir' ? 'bg-greenstat text-white' : item.id === 'Izin/Sakit' ? 'bg-bluestat text-white' : item.id === 'Terlambat' ? 'bg-yellowstat text-white' : 'bg-redstat text-white'}`}
+          >
             <span className="text-3xl font-bold font-poppins">{item.value}</span>
             <span className="ml-2 font-poppins">{item.label}</span>
           </div>

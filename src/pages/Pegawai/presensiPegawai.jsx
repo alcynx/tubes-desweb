@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";  
-import HeaderPegawai from "../components/DashboardPegawai/HeaderPegawai";
-import SidebarPegawai from "../components/DashboardPegawai/SidebarPegawai";
-import FilterHr from "../components/DashboardHr/filterdashboard";
-import Kalender from "../components/DashboardHr/kalender";
-import AttendanceTable from "../components/DashboardPegawai/TabelPresensiPegawai";
-import UpdateEmployeeAttendanceButton from "../components/DashboardPegawai/attendanceButtonPegawai"; 
-import { useEmployeeAttendance } from '../components/DashboardPegawai/attendanceData';
+import HeaderPegawai from "../../components/DashboardPegawai/HeaderPegawai";
+import SidebarPegawai from "../../components/DashboardPegawai/SidebarPegawai";
+import FilterHr from "../../components/DashboardHr/filterdashboard";
+import Kalender from "../../components/DashboardHr/kalender";
+import AttendanceTable from "../../components/DashboardPegawai/TabelPresensiPegawai";
+import UpdateEmployeeAttendanceButton from "../../components/DashboardPegawai/attendanceButtonPegawai"; 
+import { useEmployeeAttendance } from '../../components/DashboardPegawai/attendanceData';
 
 function PresensiPegawai() {
     const [selectedFilter, setSelectedFilter] = useState("");  

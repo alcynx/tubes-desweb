@@ -1,11 +1,11 @@
 import React from "react";
-import HeaderPegawai from "../components/DashboardPegawai/HeaderPegawai";
-import SidebarPegawai from "../components/DashboardPegawai/SidebarPegawai";
-import { announcements } from "../components/LandingPage/pengumuman";
+import HeaderPegawai from "../../components/DashboardPegawai/HeaderPegawai";
+import SidebarPegawai from "../../components/DashboardPegawai/SidebarPegawai";
+import { announcements } from "../../components/LandingPage/pengumuman";
 
 function PengumumanPegawai() {
     return (
-        <div className="flex min-h-screen h-full font-poppins bg-gray-50">
+        <div className="flex min-h-screen h-full font-poppins">
             <SidebarPegawai />
             <div className="flex-1 p-6">
                 <HeaderPegawai />

@@ -1,7 +1,7 @@
 import React from "react";
-import { useAnnouncements } from "../components/Pengumuman/AnnouncementsContext";
-import Sidebar from "../components/DashboardHr/sidebar"; 
-import HeaderHr from "../components/DashboardHr/header";
+import { useAnnouncements } from "../../components/Pengumuman/AnnouncementsContext";
+import Sidebar from "../../components/DashboardHr/sidebar"; 
+import HeaderHr from "../../components/DashboardHr/header";
 
 const PublishedAnnouncementsPage = () => {
   const { announcements } = useAnnouncements(); 

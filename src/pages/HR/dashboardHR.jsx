@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import HeaderHR from "../components/DashboardHr/header";
-import Sidebar from "../components/DashboardHr/sidebar";
-import FilterHr from "../components/DashboardHr/filterdashboard";
-import Kalender from "../components/DashboardHr/kalender";
-import AttendanceTable from "../components/DashboardHr/tablepresensi";
-import RealTimeClockWithDay from "../components/DashboardHr/time";
-import { useAttendance } from '../components/DashboardHr/AttendanceContext';
-import UpdateAttendanceButton from "../components/DashboardHr/attendanceB";
-import { formatDate } from "../components/DashboardHr/formatdate";
+import HeaderHR from "../../components/DashboardHr/header";
+import Sidebar from "../../components/DashboardHr/sidebar";
+import FilterHr from "../../components/DashboardHr/filterdashboard";
+import Kalender from "../../components/DashboardHr/kalender";
+import AttendanceTable from "../../components/DashboardHr/tablepresensi";
+import RealTimeClockWithDay from "../../components/DashboardHr/time";
+import { useAttendance } from '../../components/DashboardHr/AttendanceContext';
+import UpdateAttendanceButton from "../../components/DashboardHr/attendanceB";
+import { formatDate } from "../../components/DashboardHr/formatdate";
 import { FaUser, FaCheck, FaTimes, FaClock, FaCalendarAlt } from "react-icons/fa"; 
 
 function DashboardHr() {
@@ -38,24 +38,21 @@ function DashboardHr() {
     };
 
     const handleDateSearch = (searchDate) => {
-        const formattedSearchDate = formatDate(searchDate); // Gunakan formatDate
+        const formattedSearchDate = formatDate(searchDate); 
         const filteredData = attendanceData.filter(item => item.date === formattedSearchDate);
         setFilteredData(filteredData);
     };
     
 
     const handleDateChange = (date) => {
-        setSelectedDate(date); // Simpan tanggal yang dipilih
-        // const formattedDate = formatDate(date); // Format tanggal
-        // const filtered = attendanceData.filter(item => item.date === formattedDate);
-        // setFilteredData(filtered);
+        setSelectedDate(date);
         handleDateSearch(date);
     };
 
     const filteredAttendanceData = attendanceData.filter((item) => {
         const matchesSearchTerm = item.name.toLowerCase().includes(searchTerm.toLowerCase());
         const matchesFilter = selectedFilter ? item.status === selectedFilter : true;
-        const matchesDate = selectedDate ? formatDate(selectedDate) === item.date : true; // Perbandingan tanggal
+        const matchesDate = selectedDate ? formatDate(selectedDate) === item.date : true;
         return matchesSearchTerm && matchesFilter && matchesDate;
     });
 

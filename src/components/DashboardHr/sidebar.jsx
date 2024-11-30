@@ -21,7 +21,7 @@ const Sidebar = () => {
                     </li>
                     <li>
                         <NavLink 
-                            to="/" 
+                            to="/kelolaAbsenHr" 
                             className="text-[#16423C] block p-4 text-center" 
                             activeClassName="font-bold text-[#16423C]"
                         >

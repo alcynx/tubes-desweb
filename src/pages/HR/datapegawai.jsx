@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import HeaderHR from "../components/DashboardHr/header";
-import Sidebar from "../components/DashboardHr/sidebar";
-import TablePegawai from "../components/DetailPegawai/tablepegawai";
-import ModalDetailPegawai from "../components/DetailPegawai/ModalDetailPegawai";
-import dataPegawai from "../components/DetailPegawai/dataparapegawai";
+import HeaderHR from "../../components/DashboardHr/header";
+import Sidebar from "../../components/DashboardHr/sidebar";
+import TablePegawai from "../../components/DetailPegawai/tablepegawai";
+import ModalDetailPegawai from "../../components/DetailPegawai/ModalDetailPegawai";
+import dataPegawai from "../../components/DetailPegawai/dataparapegawai";
 
 function DataPegawai() {
     const [searchTerm, setSearchTerm] = useState("");

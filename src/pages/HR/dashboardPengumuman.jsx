@@ -1,7 +1,7 @@
 import React from "react";
-import Sidebar from "../components/DashboardHr/sidebar";
-import HeaderHr from "../components/DashboardHr/header";
-import AnnouncementForm from "../components/Pengumuman/formPengumuman";
+import Sidebar from "../../components/DashboardHr/sidebar";
+import HeaderHr from "../../components/DashboardHr/header";
+import AnnouncementForm from "../../components/Pengumuman/formPengumuman";
 
 const AnnouncementsPage = () => {
   return (
