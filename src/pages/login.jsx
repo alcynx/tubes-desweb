@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useNavigate } from 'react-router-dom';
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
 const Login = () => {
     
@@ -44,7 +45,7 @@ const Login = () => {
                             className="w-full p-3 rounded-lg bg-primary text-tertiary focus:outline-none"
                         />
                     </div>
-                    <div className="mb-4 relative">
+                    <div className="mb-4 relative items-center">
                         <label className="block text-tertiary text-sm font-light mb-2">Password</label>
                         <input
                             type={showPassword ? "text" : "password"}
@@ -56,11 +57,12 @@ const Login = () => {
                         <button
                             type="button"
                             onClick={handlePasswordVisibility}
-                            className="absolute inset-y-0 right-3 flex items-center text-gray-500"
+                            className="absolute  inset-y-0  mt-7 right-3 flex items-center text-tertiary"
                         >
-                            <FontAwesomeIcon icon={showPassword ? "fa-eye-slash" : "fa-eye"} />
+                            <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
                         </button>
                     </div>
+                        
                     <div className="flex justify-center">
                         <button type="submit" className="w-[150px] bg-tertiary text-white py-2 rounded-full mt-10">
                             Masuk
