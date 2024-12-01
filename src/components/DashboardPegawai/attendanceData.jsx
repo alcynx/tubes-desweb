@@ -189,20 +189,30 @@ export const EmployeeAttendanceProvider = ({ children }) => {
                 lembur: '-' 
             },
         ];
-        const allData = [...initialData, ...storedData];
-
+        const allData = [
+            ...storedData.filter(storedEntry => 
+                !initialData.some(initialEntry => 
+                    initialEntry.name === storedEntry.name && initialEntry.date === storedEntry.date
+                )
+            ),
+            ...initialData
+        ];
+    
         const sortedData = allData.sort((a, b) => {
             const dateA = new Date(a.date.split('/').reverse().join('-'));
             const dateB = new Date(b.date.split('/').reverse().join('-'));
             return dateB - dateA;
         });
-
+    
         setEmployeeAttendanceData(sortedData);
-    }, []);
-
+    }, []); // Efek hanya dijalankan sekali saat pertama kali render
+    
     useEffect(() => {
-        localStorage.setItem('employeeAttendanceData', JSON.stringify(employeeAttendanceData));
-    }, [employeeAttendanceData]);
+        // Hanya simpan ke localStorage jika ada perubahan data
+        if (employeeAttendanceData.length > 0) {
+            localStorage.setItem('employeeAttendanceData', JSON.stringify(employeeAttendanceData));
+        }
+    }, [employeeAttendanceData]); // Efek dijalankan setiap kali data berubah    
 
     return (
         <EmployeeAttendanceContext.Provider value={{ employeeAttendanceData, setEmployeeAttendanceData }}>

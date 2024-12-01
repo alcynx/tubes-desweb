@@ -13,7 +13,7 @@ const UpdateEmployeeAttendanceButton = () => {
         let status;
         const currentHour = now.getHours();
         const currentMinute = now.getMinutes();
-
+    
         if (currentHour === 8 && currentMinute >= 0 && currentMinute < 30) {
             status = 'Hadir';
         } else if (currentHour > 8 || (currentHour === 8 && currentMinute >= 30)) {
@@ -21,17 +21,18 @@ const UpdateEmployeeAttendanceButton = () => {
         } else {
             status = 'Absen';
         }
-
+    
         const existingEntry = employeeAttendanceData.find(entry => entry.name === 'Nabila Chairunnisa' && entry.date === currentDate);
         
+        let updatedData;
         if (existingEntry) {
             const updatedEntry = {
                 ...existingEntry,
                 status,
                 masuk: `${now.getHours()}:${now.getMinutes()}`,
             };
-            setEmployeeAttendanceData(prevData => 
-                prevData.map(entry => (entry.name === 'Nabila Chairunnisa' && entry.date === currentDate ? updatedEntry : entry))
+            updatedData = employeeAttendanceData.map(entry =>
+                entry.name === 'Nabila Chairunnisa' && entry.date === currentDate ? updatedEntry : entry
             );
             setCurrentEntry(updatedEntry);
         } else {
@@ -44,35 +45,42 @@ const UpdateEmployeeAttendanceButton = () => {
                 masuk: `${now.getHours()}:${now.getMinutes()}`,
                 keluar: '-',
             };
-
-            setEmployeeAttendanceData(prevData => [...prevData, newEntry]);
+            updatedData = [...employeeAttendanceData, newEntry];
             setCurrentEntry(newEntry);
         }
+    
+        // Update state dan simpan data ke localStorage
+        setEmployeeAttendanceData(updatedData);
+        localStorage.setItem('employeeAttendanceData', JSON.stringify(updatedData)); // Simpan ke localStorage langsung
         setIsCheckedIn(true);
     };
-
+    
     const handleCheckOutUpdate = () => {
         const now = new Date();
         const checkOutHour = now.getHours();
         let overtime = '-';
-
+    
         if (checkOutHour > 17) {
             const overtimeHours = checkOutHour - 17;
             overtime = `${overtimeHours} Jam`;
         }
-
+    
         const updatedEntry = {
             ...currentEntry,
             lembur: overtime,
             jamKeluar: `${now.getHours()}:${now.getMinutes()}`,
         };
-
-        setEmployeeAttendanceData(prevData => {
-            return prevData.map(entry => (entry.name === 'Nabila Chairunnisa' && entry.date === currentEntry.date ? updatedEntry : entry));
-        });
-
+    
+        const updatedData = employeeAttendanceData.map(entry =>
+            entry.name === 'Nabila Chairunnisa' && entry.date === currentEntry.date ? updatedEntry : entry
+        );
+    
+        // Update state dan simpan data ke localStorage
+        setEmployeeAttendanceData(updatedData);
+        localStorage.setItem('employeeAttendanceData', JSON.stringify(updatedData)); // Simpan ke localStorage langsung
         setIsCheckedIn(false);
     };
+    
 
     return (
         <div>
