@@ -48,10 +48,9 @@ const UpdateEmployeeAttendanceButton = () => {
             updatedData = [...employeeAttendanceData, newEntry];
             setCurrentEntry(newEntry);
         }
-    
-        // Update state dan simpan data ke localStorage
+
         setEmployeeAttendanceData(updatedData);
-        localStorage.setItem('employeeAttendanceData', JSON.stringify(updatedData)); // Simpan ke localStorage langsung
+        localStorage.setItem('employeeAttendanceData', JSON.stringify(updatedData)); 
         setIsCheckedIn(true);
     };
     
@@ -74,10 +73,9 @@ const UpdateEmployeeAttendanceButton = () => {
         const updatedData = employeeAttendanceData.map(entry =>
             entry.name === 'Nabila Chairunnisa' && entry.date === currentEntry.date ? updatedEntry : entry
         );
-    
-        // Update state dan simpan data ke localStorage
+
         setEmployeeAttendanceData(updatedData);
-        localStorage.setItem('employeeAttendanceData', JSON.stringify(updatedData)); // Simpan ke localStorage langsung
+        localStorage.setItem('employeeAttendanceData', JSON.stringify(updatedData));
         setIsCheckedIn(false);
     };
     

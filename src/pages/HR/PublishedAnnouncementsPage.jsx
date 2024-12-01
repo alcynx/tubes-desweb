@@ -4,10 +4,9 @@ import Sidebar from "../../components/DashboardHr/sidebar";
 import HeaderHr from "../../components/DashboardHr/header";
 
 const PublishedAnnouncementsPage = () => {
-  const { announcements, updateAnnouncementStatus } = useAnnouncements(); // Tambahkan fungsi updateAnnouncementStatus
-  const [activeTab, setActiveTab] = useState("Published"); // State untuk tab aktif
+  const { announcements, updateAnnouncementStatus } = useAnnouncements(); 
+  const [activeTab, setActiveTab] = useState("Published"); 
 
-  // Filter berdasarkan status pengumuman
   const drafts = announcements.filter((announcement) => announcement.status === "Draft");
   const published = announcements.filter((announcement) => announcement.status === "Published");
 
@@ -18,7 +17,6 @@ const PublishedAnnouncementsPage = () => {
         <HeaderHr />
         <h1 className="text-[#16423C] font-bold text-2xl mb-8 mt-8">Pengumuman</h1>
 
-        {/* Tab Navigation */}
         <div className="flex space-x-4 mb-6">
           <button
             className={`px-4 py-2 rounded-[10px] ${
@@ -38,7 +36,6 @@ const PublishedAnnouncementsPage = () => {
           </button>
         </div>
 
-        {/* Tampilkan Tab Berdasarkan Status */}
         {activeTab === "Published" && (
           <div>
             {published.length > 0 ? (

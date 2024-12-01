@@ -14,8 +14,8 @@ function DashboardPe() {
 
     const publishedAnnouncements = announcements
         .filter((a) => a.status === "Published")
-        .sort((a, b) => new Date(b.date) - new Date(a.date)) // Menyortir berdasarkan tanggal terbaru
-        .slice(0, 2); // Mengambil 2 pengumuman teratas
+        .sort((a, b) => new Date(b.date) - new Date(a.date)) 
+        .slice(0, 2); 
 
     const formatDate = (dateStr) => {
         const [day, month, year] = dateStr.split('/');
@@ -38,7 +38,7 @@ function DashboardPe() {
     return (
         <div className="flex min-h-screen h-full font-poppins">
             <SidebarPegawai />
-            <div className="flex-1 p-6">
+            <div className="flex-1 p-6 ml-64">
                 <HeaderPegawai />
 
                 <section className="p-6 rounded-lg bg-white">

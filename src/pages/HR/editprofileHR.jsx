@@ -1,21 +1,21 @@
 import React, { useState } from "react";
+import Sidebar from "../../components/DashboardHr/sidebar";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleInfo } from '@fortawesome/free-solid-svg-icons';
 import { faBell } from '@fortawesome/free-solid-svg-icons';
-import SidebarPegawai from "../../components/DashboardPegawai/SidebarPegawai";
 
 function ProfilePage() {
   const [isEditing, setIsEditing] = useState(false);
   const [profileData, setProfileData] = useState({
-    firstName: "Nabila Chairunnisa",
-    email: "nabilachaa14@gmail.com",
-    phoneNumber: "0812675463",
-    birthDate: "Balikpapan, 04 Juli 2000",
+    firstName: "Jason Sebastian",
+    email: "JS@gmail.com",
+    phoneNumber: "081234567890",
+    birthDate: "South Korea, 29 February 2004",
     domicile: "Jakarta, Indonesia",
     placement: "Work From Office",
-    position: "Quality Assurance",
-    status: "Aktif",
-    profilePhoto: "/images/profilephoto.png",
+    department: "Human Resources",
+    status: "Active",
+    profilePhoto: "/images/PhotoHr.jpeg",
   });
 
   const handleEditClick = () => setIsEditing(true);
@@ -38,38 +38,20 @@ function ProfilePage() {
   };
 
   return (
-    <div className="flex h-screen">
-      <SidebarPegawai />
+    <div className="flex bg-[#ffffff] h-screen">
+      <Sidebar/>
       <div className="flex-1 p-6 ml-64">
-        <ProfileContent
-          isEditing={isEditing}
-          profileData={profileData}
-          handleEditClick={handleEditClick}
-          handleSaveClick={handleSaveClick}
-          handleCancelClick={handleCancelClick}
-          handleInputChange={handleInputChange}
-          handlePhotoChange={handlePhotoChange}
-        />
+      <ProfileContent
+        isEditing={isEditing}
+        profileData={profileData}
+        handleEditClick={handleEditClick}
+        handleSaveClick={handleSaveClick}
+        handleCancelClick={handleCancelClick}
+        handleInputChange={handleInputChange}
+        handlePhotoChange={handlePhotoChange}
+      />
       </div>
     </div>
-  );
-}
-
-function Sidebar() {
-  return (
-    <div className="w-20 bg-[#16423C] h-screen flex flex-col items-center py-6">
-  <div className="bg-transparent p-3 rounded-lg mb-10 hover:bg-[#92c2b2] transition-colors duration-300">
-    <img src="/images/home.png" alt="Home Icon" className="w-6 h-6" />
-  </div>
-  <div className="bg-transparent p-3 rounded-lg mt-auto hover:bg-[#A7D4C5] transition-colors duration-300">
-    <img src="/images/secure.png" alt="Staff Icon" className="w-6 h-6" />
-  </div>
-  <div className="bg-transparent p-3 rounded-lg mt-auto hover:bg-[#A7D4C5] transition-colors duration-300">
-    <img src="/images/logout.png" alt="Logout Icon" className="w-6 h-6" />
-  </div>
-</div>
-
-
   );
 }
 
@@ -148,7 +130,7 @@ function ProfileCard({ profileData, isEditing, handlePhotoChange }) {
         <h3 className="text-xl font-bold text-[#417D7A]">
           {profileData.firstName}
         </h3>
-        <p className="font-bold text-[#909090]">ID 3208329</p>
+        <p className="font-bold text-[#909090]">ID 11001011</p>
       </div>
       {isEditing && (
         <input
@@ -188,7 +170,7 @@ function PersonalInfo({ isEditing, profileData, handleInputChange }) {
           handleInputChange={handleInputChange}
         />
         <ProfileField
-          label="Birth Date"
+          label="Birthdate"
           name="birthDate"
           value={profileData.birthDate}
           isEditing={isEditing}
@@ -225,23 +207,16 @@ function JobInfo({ isEditing, profileData, handleInputChange }) {
           handleInputChange={handleInputChange}
         />
         <ProfileField
-          label="Placement"
-          name="placement"
-          value={profileData.placement}
-          isEditing={isEditing}
-          handleInputChange={handleInputChange}
-        />
-        <ProfileField
-          label="Position"
-          name="position"
-          value={profileData.position}
-          isEditing={isEditing}
-          handleInputChange={handleInputChange}
-        />
-        <ProfileField
           label="Status"
           name="status"
           value={profileData.status}
+          isEditing={isEditing}
+          handleInputChange={handleInputChange}
+        />
+        <ProfileField
+          label="Department"
+          name="department"
+          value={profileData.department}
           isEditing={isEditing}
           handleInputChange={handleInputChange}
         />

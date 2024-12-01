@@ -23,7 +23,7 @@ export const AnnouncementsProvider = ({ children }) => {
     const updatedAnnouncements = announcements.map((announcement, i) =>
       i === index ? { ...announcement, status: newStatus } : announcement
     );
-    setAnnouncements([...updatedAnnouncements]); // Menyalin array untuk memicu rerender
+    setAnnouncements([...updatedAnnouncements]); 
     localStorage.setItem('announcements', JSON.stringify(updatedAnnouncements));
   };
   

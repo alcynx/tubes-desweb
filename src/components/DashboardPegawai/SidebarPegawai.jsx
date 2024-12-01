@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 const SidebarPegawai = () => {
   return (
     <>
-      <aside className="w-64 bg-primary min-h-screen p-5 flex flex-col justify-between">
+      <aside className="fixed w-64 bg-primary min-h-screen p-5 flex flex-col justify-between">
         <div className="flex items-center mb-10 justify-center">
           <img
             src="/images/logo-dark.png"

@@ -4,7 +4,6 @@ import { ResponsivePie } from '@nivo/pie';
 const StatistikChart = ({ data }) => {
   return (
     <div className="flex">
-      {/* Bagian Chart */}
       <div style={{ height: 200, width: 200 }}>
         <ResponsivePie
           data={data}
@@ -25,7 +24,6 @@ const StatistikChart = ({ data }) => {
         />
       </div>
 
-      {/* Bagian Card Statistik */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mx-auto my-4">
         {data.map((item) => (
           <div

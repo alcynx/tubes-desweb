@@ -39,7 +39,7 @@ const Sidebar = () => {
                             to="/daftarpengajuan"
                             className={({ isActive }) =>
                                 `block p-4 text-center ${
-                                    isActive ? "font-bold text-[#16423C]" : "font-light text-[#16423C]"
+                                    isActive ? "font-bold text-[#16423C]" : "font-light text-[#16423C] hover:font-bold"
                                 }`
                             }
                         >

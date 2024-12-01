@@ -40,7 +40,7 @@ function PresensiPegawai() {
     return (
         <div className="flex min-h-screen h-full font-poppins">
             <SidebarPegawai />
-            <div className="flex-1 p-6">
+            <div className="flex-1 p-6 ml-64">
                 <HeaderPegawai />
                 
                 <section className="bg-white p-6 rounded-lg shadow-md my-6">
@@ -50,10 +50,7 @@ function PresensiPegawai() {
                             <div className="flex justify-between mb-4 text-tertiary">
                                 <div className="flex space-x-4">
                                     <FilterHr onFilterChange={setSelectedFilter} />
-
                                     <Kalender onDateChange={handleDateChange} />
-
-                                    <button className="p-2 rounded-lg border border-secondary">Unduh</button>
                                 </div>
                             </div>
                         </div>

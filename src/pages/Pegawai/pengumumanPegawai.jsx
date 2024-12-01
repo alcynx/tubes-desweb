@@ -13,7 +13,7 @@ function PengumumanPegawai() {
     return (
         <div className="flex min-h-screen h-full font-poppins">
             <SidebarPegawai />
-            <div className="flex-1 p-6">
+            <div className="flex-1 p-6 ml-64">
                 <HeaderPegawai />
                 <div className="mt-6">
                     <h1 className="text-3xl font-bold text-tertiary">
@@ -72,7 +72,6 @@ function PengumumanCard({ announcement }) {
                         {announcement.category}
                     </span>
                 </p>
-                {/* CTA Button */}
                 <button
                     onClick={toggleDescription}
                     className="px-4 py-2 bg-tertiary text-white font-medium rounded-lg hover:bg-[#133d37] transition-colors duration-300"

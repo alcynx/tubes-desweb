@@ -5,8 +5,6 @@ import AttendanceTable from "../../components/DashboardHr/tablepresensi";
 import Kalender from "../../components/DashboardHr/kalender";
 import DownloadButton from "../../components/DashboardHr/download";
 import { FiSearch, FiCalendar, FiDownload } from "react-icons/fi";
-import { MdEditSquare } from "react-icons/md";
-import { FaTrash } from "react-icons/fa";
 import { FaSearch } from "react-icons/fa";
 import { formatDate } from "../../components/DashboardHr/formatdate";
 import { useAttendance } from '../../components/DashboardHr/AttendanceContext';
@@ -52,17 +50,13 @@ const Dashboard = () => {
 
   return (
     <div className="flex">
-      {/* Sidebar */}
       <Sidebar />
 
-      {/* Main Content */}
       <main className="flex-1 p-6 ml-64">
-        {/* Header */}
         <HeaderHR />
 
         <section className='rounded-lg my-6'>
             <div className="flex items-center justify-between p-4">
-            {/* Title */}
             <div className="flex justify-start space-x-4">
                             <h2 className="text-lg font-bold text-tertiary">OVERVIEW ATTENDANCE</h2>
                             <div className="relative ">
@@ -82,18 +76,6 @@ const Dashboard = () => {
                         </div>
             </div>
             </section>
-
-                
-        <section className='flex justify-between font-poppins'>
-            {/* Tanggal Button */}
-            <button className="flex items-center border border-tertiary rounded-md text-tertiary px-5 hover:bg-gray-100"
-            onClick={handleButtonClick}
-            >
-            <span className="text-basic">Tambah</span>
-            </button>
-            {isFormVisible && <FormComponent isVisible={isFormVisible} onClose={handleCloseForm} />}
-
-        </section>
 
         <section className="pt-5">
         <AttendanceTable attendanceData={filteredAttendanceData} />

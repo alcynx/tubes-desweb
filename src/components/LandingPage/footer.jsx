@@ -2,8 +2,6 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookF, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons';
 
-
-
 const Footer = () => {
   return (
     <footer className="bg-secondary text-white py-8 font-poppins">

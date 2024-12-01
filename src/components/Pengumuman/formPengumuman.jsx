@@ -7,7 +7,6 @@ const AnnouncementForm = () => {
   const [showModal, setShowModal] = useState(false);
   const { addAnnouncement } = useAnnouncements(); 
 
-  // Tambahkan state untuk menyimpan inputan form
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [date, setDate] = useState("");
@@ -48,13 +47,13 @@ const AnnouncementForm = () => {
       date: date,
       category: category,
       image: image,
-      status: status === "public" ? "Published" : "Draft", // Simpan status
+      status: status === "public" ? "Published" : "Draft", 
     };
   
     addAnnouncement(newAnnouncement);
   
     alert(`Pengumuman berhasil disimpan sebagai ${status === "public" ? "Published" : "Draft"}`);
-    handleReset(); // Reset form setelah penyimpanan
+    handleReset(); 
   };
   
   

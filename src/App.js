@@ -13,6 +13,7 @@ import EditProfilePegawai from "./pages/Pegawai/EditProfilePegawai";
 import PresensiPegawai from "./pages/Pegawai/presensiPegawai";
 import PengumumanPegawai from "./pages/Pegawai/pengumumanPegawai";
 import KelolaAbsenHr from "./pages/HR/kelolaAbsenHr";
+import EditProfileHR from "./pages/HR/editprofileHR";
 
 const App = () => {
   return (
@@ -31,6 +32,7 @@ const App = () => {
         <Route path="/presensiPegawai" element={<PresensiPegawai />} />
         <Route path="/pengumumanPegawai" element={<PengumumanPegawai />} />
         <Route path="/kelolaAbsenHr" element={<KelolaAbsenHr />} />
+        <Route path="/editProfileHR" element={<EditProfileHR />} />
       </Routes>
     </Router>
   );

@@ -205,14 +205,13 @@ export const EmployeeAttendanceProvider = ({ children }) => {
         });
     
         setEmployeeAttendanceData(sortedData);
-    }, []); // Efek hanya dijalankan sekali saat pertama kali render
+    }, []); 
     
     useEffect(() => {
-        // Hanya simpan ke localStorage jika ada perubahan data
         if (employeeAttendanceData.length > 0) {
             localStorage.setItem('employeeAttendanceData', JSON.stringify(employeeAttendanceData));
         }
-    }, [employeeAttendanceData]); // Efek dijalankan setiap kali data berubah    
+    }, [employeeAttendanceData]);    
 
     return (
         <EmployeeAttendanceContext.Provider value={{ employeeAttendanceData, setEmployeeAttendanceData }}>
