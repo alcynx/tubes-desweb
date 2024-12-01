@@ -24,7 +24,7 @@ function DataPegawai() {
     return (
         <div className="flex">
             <Sidebar />
-            <div className="flex-1 p-6 bg-gray-100">
+            <div className="flex-1 p-6">
                 <HeaderHR />
                 <section className="p-6 rounded-lg my-6">
                     <div className="flex justify-between items-center mb-4">
@@ -42,8 +42,6 @@ function DataPegawai() {
                     <TablePegawai data={filteredData} onRowClick={handleRowClick} />
                 </section>
             </div>
-
-            {/* Modal for Detailed Information */}
             {selectedPegawai && (
                 <ModalDetailPegawai data={selectedPegawai} onClose={handleCloseModal} />
             )}

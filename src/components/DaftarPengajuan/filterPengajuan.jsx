@@ -1,4 +1,3 @@
-// src/components/DaftarPengajuan/filterPengajuan.jsx
 import React, { useState } from 'react';
 
 const FilterBerkas = ({ onFilterChange }) => {
@@ -7,7 +6,7 @@ const FilterBerkas = ({ onFilterChange }) => {
   const handleChange = (event) => {
     const { value } = event.target;
     setSelectedBerkas(value);
-    onFilterChange(value); // Kirim filter ke parent
+    onFilterChange(value);
   };
 
   return (

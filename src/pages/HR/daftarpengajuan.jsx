@@ -40,7 +40,6 @@ const Pengajuan = () => {
             </div>
           )}
 
-          {/* Filter Dropdown */}
           <div className='flex justify-between mb-4'>
             <div className='flex-grow'>
               <FilterBerkas onFilterChange={handleFilterChange} />

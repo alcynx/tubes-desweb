@@ -8,7 +8,7 @@ const Kalender = ({ onDateChange }) => {
 
     const handleDateChange = (date) => {
         setSelectedDate(date);
-        onDateChange(date); // Panggil fungsi dari parent dengan tanggal yang dipilih
+        onDateChange(date); 
     };
 
     return (
@@ -17,7 +17,7 @@ const Kalender = ({ onDateChange }) => {
             <DatePicker
                 selected={selectedDate}
                 onChange={handleDateChange}
-                className="focus:outline-none text-secondary placeholder:text-secondary w-[100px]" // Batas lebar eksplisit
+                className="focus:outline-none text-secondary placeholder:text-secondary w-[100px]" 
                 placeholderText="Tanggal"
                 dateFormat="dd/MM/yyyy"
             />

@@ -1,4 +1,3 @@
-// src/components/CardPengajuan.js
 import React from 'react';
 
 const CardPengajuan = ({ nama, jenisPengajuan, tanggalPengajuan, tanggalMulai, tanggalSelesai, durasi }) => {

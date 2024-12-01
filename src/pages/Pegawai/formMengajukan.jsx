@@ -69,10 +69,8 @@ const FormPengajuan = ({ onSubmit }) => {
 
   return (
     <div className="flex">
-      {/* Sidebar */}
       <SidebarPegawai />
 
-      {/* Form Pengajuan */}
       <div className="flex-1 p-10 bg-gray-100">
         <div className="max-w-lg mx-auto bg-white p-6 rounded-lg shadow-md border border-[#417D7A]">
           <h1 className="text-2xl font-bold text-gray-700 mb-6 text-center">Form Pengajuan</h1>

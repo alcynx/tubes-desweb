@@ -1,4 +1,3 @@
-// AttendanceTable.jsx
 import React from 'react';
 
 const AttendanceTable = ({ attendanceData }) => {

@@ -4,16 +4,15 @@ import { MdEmail } from "react-icons/md";
 import { FaPhoneVolume } from "react-icons/fa6";
 
 function ModalDetailPegawai({ data, onClose }) {
-    if (!data) return null; // If no data, don't show anything
+    if (!data) return null; 
 
     return (
         <div className="fixed inset-0 bg-gray-500 bg-opacity-50 flex justify-center items-center z-50">
             <div className="bg-white p-6 rounded-lg w-[80%] h-[90%] relative">
                 <button onClick={onClose} className="absolute top-2 left-2 text-gray-500">
-                    ✖️ {/* Icon to close modal */}
+                    ✖️ 
                 </button>
                 
-                {/* Header with Name, Position, Status */}
                 <div className="flex flex-col items-start mb-4 mt-6 bg-white border border-gray-500 rounded-[10px] shadow-md ">
                     <div className="flex space-x-2 mt-6 ml-8">
                         <span className="px-2 py-1 bg-yellow-200 text-gray-700 rounded-[10px]">{data.posisi}</span>
@@ -24,8 +23,6 @@ function ModalDetailPegawai({ data, onClose }) {
                     <p className="text-md font-regular text-blue-500 mt-2 ml-8 mb-2">ID: {data.id}</p>
                 </div>
 
-
-                {/* Other details */}
                 <div className="flex flex-col items-start mb-4 mt-4 bg-white border border-gray-500 rounded-[10px] shadow-md">
                     <div className="mt-2 ml-4 mb-2  text-[#16423C] p-4 rounded-md">
                         <div className="flex items-center mb-2 ">
@@ -41,7 +38,6 @@ function ModalDetailPegawai({ data, onClose }) {
                     </div>
                 </div>
 
-                {/* Sisa Cuti, Kehadiran, etc */}
                 <div className="flex flex-col mb-4 mt-4 bg-white border border-gray-500 rounded-[10px] shadow-md">
                     <div className="flex space-x-2 mt-4 ml-8">
                         <span className="px-2 py-1 border border-gray-500 text-[#16423C] rounded-[10px]">Bulan</span>
@@ -54,7 +50,6 @@ function ModalDetailPegawai({ data, onClose }) {
                     </div>
                 </div>
 
-                {/* History Table */}
                 <div className="flex flex-col mb-4 mt-4 bg-[#C4DAD2] border border-gray-500 rounded-[10px] shadow-md">
                     <span className="text-[#417D7A] ml-8">Riwayat</span>
                 </div>

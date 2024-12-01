@@ -1,14 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import HeaderHR from "../../components/DashboardHr/header";
 import Sidebar from "../../components/DashboardHr/sidebar";
 import FilterHr from "../../components/DashboardHr/filterdashboard";
 import Kalender from "../../components/DashboardHr/kalender";
+import DownloadButton from "../../components/DashboardHr/download";
 import AttendanceTable from "../../components/DashboardHr/tablepresensi";
 import RealTimeClockWithDay from "../../components/DashboardHr/time";
 import { useAttendance } from '../../components/DashboardHr/AttendanceContext';
-import UpdateAttendanceButton from "../../components/DashboardHr/attendanceB";
 import { formatDate } from "../../components/DashboardHr/formatdate";
 import { FaUser, FaCheck, FaTimes, FaClock, FaCalendarAlt } from "react-icons/fa"; 
+import { FaSearch } from "react-icons/fa";
 
 function DashboardHr() {
     const { attendanceData } = useAttendance();
@@ -31,7 +32,7 @@ function DashboardHr() {
         ];
     };
 
-    const totalKaryawan = attendanceData.length;
+    const totalKaryawan = new Set(attendanceData.map((item) => item.name)).size;
 
     const handleFilterChange = (filter) => {
         setSelectedFilter(filter);
@@ -49,24 +50,26 @@ function DashboardHr() {
         handleDateSearch(date);
     };
 
-    const filteredAttendanceData = attendanceData.filter((item) => {
-        const matchesSearchTerm = item.name.toLowerCase().includes(searchTerm.toLowerCase());
-        const matchesFilter = selectedFilter ? item.status === selectedFilter : true;
-        const matchesDate = selectedDate ? formatDate(selectedDate) === item.date : true;
-        return matchesSearchTerm && matchesFilter && matchesDate;
-    });
+    const filteredAttendanceData = attendanceData
+        .sort((a, b) => new Date(b.date) - new Date(a.date))
+        .slice(0, 10)
+        .filter((item) => {
+            const matchesSearchTerm = item.name.toLowerCase().includes(searchTerm.toLowerCase());
+            const matchesFilter = selectedFilter ? item.status === selectedFilter : true;
+            const matchesDate = selectedDate ? formatDate(selectedDate) === item.date : true;
+            return matchesSearchTerm && matchesFilter && matchesDate;
+        });
 
-    const filteredStats = calculateFilteredStats(filteredAttendanceData);
+    const filteredStats = calculateFilteredStats(attendanceData);
 
     return (
         <div className="flex">
             <Sidebar />
-            <div className="flex-1 p-6 bg-gray-100">
+            <div className="flex-1 p-6">
                 <HeaderHR />
                 <section className="p-6 rounded-lg my-6">
                     <div className="flex justify-between items-center mb-4">
                         <h2 className="text-lg font-bold text-[#16423C]">HR ATTENDANCE</h2>
-                        <UpdateAttendanceButton />
                         <h3 className="text-lg regular text-[#417D7A]">
                             <RealTimeClockWithDay />
                         </h3>
@@ -75,21 +78,18 @@ function DashboardHr() {
                     <div className="grid grid-cols-5 gap-4">
                          {/* Total Karyawan */}
                          <div className="text-center flex flex-col items-left p-4 bg-white border border-[#417D7A] rounded-md shadow-sm">
-                            <FaUser className="text-xl text-[#16423C] mb-2" /> {/* Ikon Karyawan */}
+                            <FaUser className="text-xl text-[#16423C] mb-2" /> 
                             <p className="text-gray-600 text-[#417D7A] text-left">Karyawan</p>
                             <p className="text-2xl font-bold text-[#16423C] text-left">{totalKaryawan}</p>
                         </div>
 
-                        {/* Kotak Statistik Berdasarkan Status */}
                         {filteredStats.map((stat, index) => (
                             <div key={index} className="text-center flex flex-col items-left p-4 bg-white border border-[#417D7A] rounded-md shadow-sm">
-                                {/* Menampilkan ikon yang berbeda untuk setiap status */}
                                 {stat.label === "Hadir" && <FaCheck className="text-xl text-[#16423C] mb-2" />}
                                 {stat.label === "Terlambat" && <FaClock className="text-xl text-[#16423C] mb-2" />}
                                 {stat.label === "Absen" && <FaTimes className="text-xl text-[#16423C] mb-2" />}
                                 {stat.label === "Izin/Cuti" && <FaCalendarAlt className="text-xl text-[#16423C] mb-2" />}
                                 
-                                {/* Nilai dan Label */}
                                 <p className="text-[#417D7A] text-left">{stat.label}</p>
                                 <p className="text-2xl font-bold text-[#16423C] text-left">{stat.value}</p>
                             </div>
@@ -100,17 +100,23 @@ function DashboardHr() {
                 <section className="bg-white p-6 rounded-lg shadow-md my-6">
                     <h2 className="text-lg font-bold mb-4 text-[#16423C]">Overview Attendance</h2>
                     <div className="flex justify-between mb-4 text-[#16423C]">
-                        <input 
-                            type="text"
-                            placeholder="Search"
-                            className="p-2 border rounded-lg w-1/3 border border-[#417D7A]"
-                            value={searchTerm}
-                            onChange={(e) => setSearchTerm(e.target.value)}
-                        />
-                        <div className="flex space-x-4">
+                        <div className=" flex space-x-4"> 
+                            <div className="relative ">
+                                < input 
+                                    type="text"
+                                    placeholder="Search"
+                                    className="p-2 px-9 border rounded-lg border border-tertiary"
+                                    value={searchTerm}
+                                    onChange={(e) => setSearchTerm(e.target.value)}
+                                />
+                                <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-tertiary"/>
+                            </div>
                             <FilterHr onFilterChange={handleFilterChange}/>
+                        </div>
+                    
+                        <div className="flex space-x-4">
                             <Kalender onDateChange={handleDateChange} />
-                            <button className="p-2 rounded-lg border border-[#417D7A]">Unduh</button>
+                            <DownloadButton attendanceData={filteredAttendanceData} />
                         </div>
                     </div>
                     <AttendanceTable attendanceData={filteredAttendanceData} />
@@ -121,5 +127,3 @@ function DashboardHr() {
 }
 
 export default DashboardHr;
-
-

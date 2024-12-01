@@ -25,7 +25,6 @@ const Home = () => {
         </span>
       </div>
 
-      {/* Right Section: Image */}
       <div className="hidden lg:block mb-8 mt-4">
         <img src="images/together.png" alt="Team Illustration" className="w-full h-auto" />
       </div>

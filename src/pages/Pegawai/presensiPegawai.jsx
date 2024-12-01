@@ -30,11 +30,9 @@ function PresensiPegawai() {
     }, [selectedFilter, employeeAttendanceData]);
 
     const handleDateChange = (date) => {
-        // Format tanggal yang dipilih menjadi 'DD/MM/YY'
         const formattedDate = new Date(date);
         const formattedDateString = `${String(formattedDate.getDate()).padStart(2, '0')}/${String(formattedDate.getMonth() + 1).padStart(2, '0')}/${String(formattedDate.getFullYear()).slice(-2)}`;
 
-        // Filter data berdasarkan tanggal yang sesuai dengan format 'DD/MM/YY'
         const filteredByDate = employeeAttendanceData.filter(item => item.date === formattedDateString);
         setFilteredData(filteredByDate);
     };
@@ -47,24 +45,19 @@ function PresensiPegawai() {
                 
                 <section className="bg-white p-6 rounded-lg shadow-md my-6">
                     <div className="flex justify-between items-start mb-4">
-                        {/* Overview Attendance */}
                         <div className="flex-1">
                             <h2 className="text-lg font-bold mb-4 text-tertiary">Overview Attendance</h2>
                             <div className="flex justify-between mb-4 text-tertiary">
                                 <div className="flex space-x-4">
-                                    {/* Filter Status */}
                                     <FilterHr onFilterChange={setSelectedFilter} />
 
-                                    {/* Kalender untuk memilih tanggal */}
                                     <Kalender onDateChange={handleDateChange} />
 
-                                    {/* Button Unduh */}
                                     <button className="p-2 rounded-lg border border-secondary">Unduh</button>
                                 </div>
                             </div>
                         </div>
 
-                        {/* Mulai Untuk Presensi Harian - Sejajar di sebelah kanan */}
                         <div className="flex flex-col items-start space-y-4 pl-10">
                             <h3 className="text-lg font-bold font-poppins text-tertiary pl-20">
                                 Mulai Untuk Presensi Harian
@@ -75,7 +68,6 @@ function PresensiPegawai() {
                         </div>
                     </div>
 
-                    {/* Tabel Presensi berdasarkan filter */}
                     <AttendanceTable attendanceData={filteredData} />
                 </section>
             </div>

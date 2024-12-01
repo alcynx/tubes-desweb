@@ -1,4 +1,3 @@
-// src/components/DashboardHr/formAbsen.jsx
 import React from 'react';
 
 const FormComponent = ({ isVisible, onClose }) => {

@@ -11,15 +11,13 @@ const FormPengajuan = ({ onSubmit }) => {
     durasi: "",
   });
 
-  // Step 1: Menambahkan useEffect untuk membaca data dari localStorage saat komponen dimuat
   useEffect(() => {
     const storedPengajuan = JSON.parse(localStorage.getItem("pengajuanList")) || [];
     if (storedPengajuan.length > 0) {
-      setFormData(storedPengajuan[storedPengajuan.length - 1]); // Ambil pengajuan terakhir
+      setFormData(storedPengajuan[storedPengajuan.length - 1]);
     }
-  }, []); // Hanya dijalankan sekali ketika komponen pertama kali dimuat
+  }, []);
 
-  // Fungsi untuk menghitung durasi
   const calculateDurasi = () => {
     if (formData.tanggalMulai && formData.tanggalSelesai) {
       const startDate = new Date(formData.tanggalMulai);
@@ -36,7 +34,6 @@ const FormPengajuan = ({ onSubmit }) => {
     }
   };
 
-  // Menambahkan useEffect untuk menghitung durasi otomatis
   useEffect(() => {
     calculateDurasi();
   }, [formData.tanggalMulai, formData.tanggalSelesai]);
@@ -71,10 +68,8 @@ const FormPengajuan = ({ onSubmit }) => {
 
   return (
     <div className="flex">
-      {/* Sidebar */}
       <SidebarPegawai />
 
-      {/* Form Pengajuan */}
       <div className="flex-1 p-10 bg-gray-100">
         <div className="max-w-lg mx-auto bg-white p-6 rounded-lg shadow-md border border-[#417D7A]">
           <h1 className="text-2xl font-bold text-gray-700 mb-6 text-center">Form Pengajuan</h1>

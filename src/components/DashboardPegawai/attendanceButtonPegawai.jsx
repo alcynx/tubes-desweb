@@ -1,38 +1,54 @@
 import React, { useState } from 'react';
-import { useEmployeeAttendance } from './attendanceData'; // Ganti dengan nama konteks yang sesuai
-import { formatDate } from '../DashboardHr/formatdate'; // Pastikan untuk mengimpor formatDate
+import { useEmployeeAttendance } from './attendanceData';
+import { formatDate } from '../DashboardHr/formatdate';
 
 const UpdateEmployeeAttendanceButton = () => {
-    const { setEmployeeAttendanceData } = useEmployeeAttendance(); // Ganti dengan hook yang sesuai
+    const { setEmployeeAttendanceData, employeeAttendanceData } = useEmployeeAttendance();
     const [isCheckedIn, setIsCheckedIn] = useState(false);
     const [currentEntry, setCurrentEntry] = useState(null);
 
     const handleAttendanceUpdate = () => {
         const now = new Date();
-        const currentDate = formatDate(now); // Format tanggal
+        const currentDate = formatDate(now);
         let status;
         const currentHour = now.getHours();
         const currentMinute = now.getMinutes();
 
-        // Tentukan status kehadiran
         if (currentHour === 8 && currentMinute >= 0 && currentMinute < 30) {
-            status = 'Hadir'; // Jika waktu antara 08:00 - 08:29
+            status = 'Hadir';
         } else if (currentHour > 8 || (currentHour === 8 && currentMinute >= 30)) {
-            status = 'Terlambat'; // Jika jam lebih dari 08:00 atau sudah lewat 08:30
+            status = 'Terlambat';
         } else {
-            status = 'Absen'; // Jika waktu sebelum jam 08:00
+            status = 'Absen';
         }
-        
-        const newEntry = {
-            date: currentDate, // Tanggal sudah diformat
-            status,
-            lembur: '-', // Default lembur diisi '-'
-        };
 
-        setEmployeeAttendanceData(prevData => [...prevData, newEntry]); // Sesuaikan dengan data pegawai
-        console.log("Updated attendance data:", newEntry);
+        const existingEntry = employeeAttendanceData.find(entry => entry.name === 'Nabila Chairunnisa' && entry.date === currentDate);
+        
+        if (existingEntry) {
+            const updatedEntry = {
+                ...existingEntry,
+                status,
+                masuk: `${now.getHours()}:${now.getMinutes()}`,
+            };
+            setEmployeeAttendanceData(prevData => 
+                prevData.map(entry => (entry.name === 'Nabila Chairunnisa' && entry.date === currentDate ? updatedEntry : entry))
+            );
+            setCurrentEntry(updatedEntry);
+        } else {
+            const newEntry = {
+                name: 'Nabila Chairunnisa',
+                role: 'Quality Assurance',
+                date: currentDate,
+                status,
+                lembur: '-',
+                masuk: `${now.getHours()}:${now.getMinutes()}`,
+                keluar: '-',
+            };
+
+            setEmployeeAttendanceData(prevData => [...prevData, newEntry]);
+            setCurrentEntry(newEntry);
+        }
         setIsCheckedIn(true);
-        setCurrentEntry(newEntry);
     };
 
     const handleCheckOutUpdate = () => {
@@ -40,24 +56,19 @@ const UpdateEmployeeAttendanceButton = () => {
         const checkOutHour = now.getHours();
         let overtime = '-';
 
-        // Hitung jam lembur jika check-out lewat jam 17
         if (checkOutHour > 17) {
             const overtimeHours = checkOutHour - 17;
             overtime = `${overtimeHours} Jam`;
         }
 
-        // Update entri yang sudah ada
         const updatedEntry = {
             ...currentEntry,
             lembur: overtime,
+            jamKeluar: `${now.getHours()}:${now.getMinutes()}`,
         };
 
         setEmployeeAttendanceData(prevData => {
-            const updatedData = prevData.map(entry =>
-                entry.date === currentEntry.date ? updatedEntry : entry
-            );
-            console.log("Updated attendance data on check-out:", updatedData);
-            return updatedData;
+            return prevData.map(entry => (entry.name === 'Nabila Chairunnisa' && entry.date === currentEntry.date ? updatedEntry : entry));
         });
 
         setIsCheckedIn(false);
@@ -65,17 +76,17 @@ const UpdateEmployeeAttendanceButton = () => {
 
     return (
         <div>
-            <button 
-                onClick={handleAttendanceUpdate} 
-                className="bg-tertiary text-primary font-poppins rounded-full p-2 w-[150px] shadow-md hover:font-bold transition duration-300" 
+            <button
+                onClick={handleAttendanceUpdate}
+                className="bg-tertiary text-primary font-poppins rounded-full p-2 w-[150px] shadow-md hover:font-bold transition duration-300"
                 disabled={isCheckedIn}
             >
                 Jam Masuk
             </button>
 
-            <button 
-                onClick={handleCheckOutUpdate} 
-                className="bg-primary text-tertiary font-poppins rounded-full p-2 w-[150px] m-2 shadow-md hover:font-bold transition duration-300" 
+            <button
+                onClick={handleCheckOutUpdate}
+                className="bg-primary text-tertiary font-poppins rounded-full p-2 w-[150px] m-2 shadow-md hover:font-bold transition duration-300"
                 disabled={!isCheckedIn}
             >
                 Jam Keluar

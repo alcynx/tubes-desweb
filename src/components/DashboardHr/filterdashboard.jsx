@@ -8,7 +8,7 @@ const FilterHr = ({ onFilterChange }) => {
     const handleFilterSelect = (e) => {
         const selected = e.target.value;
         setSelectedFilter(selected);
-        onFilterChange(selected);  // Kirim filter yang dipilih ke DashboardHr
+        onFilterChange(selected);
     };
 
     return (

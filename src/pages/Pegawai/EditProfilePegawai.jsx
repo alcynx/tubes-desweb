@@ -53,16 +53,12 @@ function ProfilePage() {
 function Sidebar() {
   return (
     <div className="w-20 bg-[#16423C] h-screen flex flex-col items-center py-6">
-  {/* Home Icon */}
   <div className="bg-transparent p-3 rounded-lg mb-10 hover:bg-[#92c2b2] transition-colors duration-300">
     <img src="/images/home.png" alt="Home Icon" className="w-6 h-6" />
   </div>
-  {/* Staff Icon */}
   <div className="bg-transparent p-3 rounded-lg mt-auto hover:bg-[#A7D4C5] transition-colors duration-300">
     <img src="/images/secure.png" alt="Staff Icon" className="w-6 h-6" />
   </div>
-
-  {/* Logout Icon */}
   <div className="bg-transparent p-3 rounded-lg mt-auto hover:bg-[#A7D4C5] transition-colors duration-300">
     <img src="/images/logout.png" alt="Logout Icon" className="w-6 h-6" />
   </div>

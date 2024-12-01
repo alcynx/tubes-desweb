@@ -10,11 +10,23 @@ import { announcements } from '../../components/LandingPage/pengumuman';
 
 function DashboardPe() {
     const { employeeAttendanceData } = useEmployeeAttendance();
+
+    const formatDate = (dateStr) => {
+        const [day, month, year] = dateStr.split('/');
+        return new Date(`20${year}-${month}-${day}`);
+    };
+
+    const sortedAttendanceData = employeeAttendanceData
+        .sort((a, b) => formatDate(b.date) - formatDate(a.date))
+        .slice(0, 7); 
+
+    const filteredData = employeeAttendanceData.filter(item => item.name === 'Nabila Chairunnisa');
+
     const data = [
-        { id: 'Hadir', label: 'Hadir', value: employeeAttendanceData.filter(item => item.status === 'Hadir').length, color: '#417D7A' },
-        { id: 'Izin/Sakit', label: 'Izin/Sakit', value: employeeAttendanceData.filter(item => item.status === 'Izin/Sakit').length, color: '#2661A7' },
-        { id: 'Terlambat', label: 'Terlambat', value: employeeAttendanceData.filter(item => item.status === 'Terlambat').length, color: '#E5E558' },
-        { id: 'Absen', label: 'Absen', value: employeeAttendanceData.filter(item => item.status === 'Absen').length, color: '#E56060' },
+        { id: 'Hadir', label: 'Hadir', value: filteredData.filter(item => item.status === 'Hadir').length, color: '#417D7A' },
+        { id: 'Izin/Sakit', label: 'Izin/Sakit', value: filteredData.filter(item => item.status === 'Izin/Sakit').length, color: '#2661A7' },
+        { id: 'Terlambat', label: 'Terlambat', value: filteredData.filter(item => item.status === 'Terlambat').length, color: '#E5E558' },
+        { id: 'Absen', label: 'Absen', value: filteredData.filter(item => item.status === 'Absen').length, color: '#E56060' },
     ];
 
     return (
@@ -23,10 +35,8 @@ function DashboardPe() {
                 <SidebarPegawai />
                 <div className="flex-1 p-6">
                     <HeaderPegawai />
-                    
-                    {/* Bagian Statistik */}
+
                     <section className="p-6 rounded-lg bg-white">
-                        {/* Header */}
                         <div className="flex justify-between items-center mb-4">
                             <h2 className="text-2xl font-bold font-poppins text-tertiary">STATISTIK</h2>
                             <h3 className="text-base font-regular">
@@ -34,14 +44,11 @@ function DashboardPe() {
                             </h3>
                         </div>
 
-                        {/* Bagian Utama dengan Grid */}
                         <div className="grid grid-cols-3 gap-6 items-center">
-                            {/* Bagian Chart dan Card Statistik */}
                             <div className="col-span-2">
                                 <StatistikChart data={data} />
                             </div>
 
-                            {/* Bagian Tombol Presensi Harian */}
                             <div className="flex flex-col items-center space-y-4">
                                 <h3 className="text-lg font-bold font-poppins text-tertiary">
                                     Mulai Untuk Presensi Harian
@@ -53,14 +60,11 @@ function DashboardPe() {
                         </div>
                     </section>
 
-                    {/* Bagian Tabel Presensi dan Pengumuman */}
                     <section className="flex space-x-8 mt-6">
-                        {/* Tabel Presensi Pegawai */}
                         <div className="w-2/3 bg-white p-6 rounded-lg">
-                            <AttendanceTable attendanceData={employeeAttendanceData} /> 
+                            <AttendanceTable attendanceData={sortedAttendanceData} /> 
                         </div>
 
-                        {/* Card Pengumuman */}
                         <div className="w-1/3 bg-white p-6 rounded-lg ">
                             <h3 className="text-xl font-bold font-poppins text-tertiary mb-4">
                                 PENGUMUMAN
@@ -72,7 +76,6 @@ function DashboardPe() {
                                     <div className="flex justify-end">
                                         <span className="font-poppins text-sm text-tertiary">{announcement.date}</span>
                                     </div>
-
                                 </div>
                             ))}
                             <div className="flex justify-end mt-4">

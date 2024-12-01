@@ -7,7 +7,6 @@ const AnnouncementForm = () => {
   const [showModal, setShowModal] = useState(false);
   const { addAnnouncement } = useAnnouncements(); 
 
-  // Tambahkan state untuk menyimpan inputan form
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [date, setDate] = useState("");
@@ -25,16 +24,14 @@ const AnnouncementForm = () => {
   const handleConfirm = () => {
     setShowModal(false);
 
-    // Ambil data dari form yang sudah disimpan di state
     const newAnnouncement = {
-      title: title,  // Menggunakan state title
-      description: description,  // Menggunakan state description
-      date: date,  // Menggunakan state date
-      category: category,  // Menggunakan state category
+      title: title, 
+      description: description,
+      date: date, 
+      category: category, 
       status: status === "public" ? "Public" : "Draft",
     };
 
-    // Menambah pengumuman ke dalam context
     addAnnouncement(newAnnouncement);
 
     alert(`Pengumuman berhasil disimpan sebagai ${status === "public" ? "Public" : "Draft"}`);
@@ -51,16 +48,16 @@ const AnnouncementForm = () => {
         <input 
           type="text" 
           className="w-full border border border-[#16423C] rounded-[10px] p-2"
-          value={title}  // Bind state dengan value inputan
-          onChange={(e) => setTitle(e.target.value)} // Update state saat inputan berubah
+          value={title} 
+          onChange={(e) => setTitle(e.target.value)} 
         />
       </div>
       <div>
         <label className="block text-[#417D7A] mb-4 mt-6">Deskripsi</label>
         <textarea 
           className="w-full border border border-[#16423C] rounded-[10px] p-2 h-24"
-          value={description} // Bind state dengan value inputan
-          onChange={(e) => setDescription(e.target.value)} // Update state saat inputan berubah
+          value={description}
+          onChange={(e) => setDescription(e.target.value)} 
         ></textarea>
       </div>
       <div>
@@ -68,16 +65,16 @@ const AnnouncementForm = () => {
         <input 
           type="date" 
           className="w-full border border border-[#16423C] rounded-[10px] p-2 text-[#16423C]"
-          value={date} // Bind state dengan value inputan
-          onChange={(e) => setDate(e.target.value)} // Update state saat inputan berubah
+          value={date} 
+          onChange={(e) => setDate(e.target.value)} 
         />
       </div>
       <div>
         <label className="block text-[#417D7A] mb-4 mt-6">Kategori</label>
         <select 
           className="w-full border border-[#16423C] rounded-[10px] p-2 text-[#16423C]"
-          value={category}  // Bind state dengan value inputan
-          onChange={(e) => setCategory(e.target.value)} // Update state saat inputan berubah
+          value={category} 
+          onChange={(e) => setCategory(e.target.value)} 
         >
           <option value="kebijakan">Kebijakan</option>
           <option value="acara">Acara</option>

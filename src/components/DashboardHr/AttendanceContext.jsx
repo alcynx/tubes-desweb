@@ -1,17 +1,34 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
+import { useEmployeeAttendance } from '../../components/DashboardPegawai/attendanceData';
 
-// Buat konteks
 const AttendanceContext = createContext(null);
 
-// Provider untuk konteks
 export const AttendanceProvider = ({ children }) => {
-    const [attendanceData, setAttendanceData] = useState([
-        { date: '31/05/24', name: 'Noladhipa A', role: 'HR Manager', status: 'Terlambat', masuk: '08.30', keluar: '16.00', lembur: '-' },
-        { date: '31/05/24', name: 'Gamatama', role: 'Software E', status: 'Absen', masuk: '-', keluar: '-', lembur: '-' },
-        { date: '31/05/24', name: 'Lattema Lie', role: 'Project Manager', status: 'Hadir', masuk: '08.00', keluar: '18.00', lembur: '2 Jam' },
-        { date: '31/05/24', name: 'Noladhipa A', role: 'HR Manager', status: 'Terlambat', masuk: '08.30', keluar: '16.00', lembur: '-' },
-        { date: '31/05/24', name: 'Gamatama', role: 'Software E', status: 'Absen', masuk: '-', keluar: '-', lembur: '-' },
-    ]);
+    const { employeeAttendanceData } = useEmployeeAttendance();
+    const [attendanceData, setAttendanceData] = useState([]);
+
+    useEffect(() => {
+        const storedData = JSON.parse(localStorage.getItem('employeeAttendanceData')) || [];
+        
+        if (storedData.length > 0) {
+            setAttendanceData(storedData);
+        } else if (employeeAttendanceData.length > 0) {
+            setAttendanceData(employeeAttendanceData);
+        }
+    }, [employeeAttendanceData]);
+
+    useEffect(() => {
+        const handleStorageChange = () => {
+            const storedData = JSON.parse(localStorage.getItem('employeeAttendanceData')) || [];
+            setAttendanceData(storedData);
+        };
+
+        window.addEventListener('storage', handleStorageChange);
+
+        return () => {
+            window.removeEventListener('storage', handleStorageChange);
+        };
+    }, []);
 
     return (
         <AttendanceContext.Provider value={{ attendanceData, setAttendanceData }}>
@@ -20,8 +37,4 @@ export const AttendanceProvider = ({ children }) => {
     );
 };
 
-// Custom hook untuk menggunakan konteks
-export const useAttendance = () => {
-    return useContext(AttendanceContext);
-};
-
+export const useAttendance = () => useContext(AttendanceContext);

@@ -22,7 +22,6 @@ function PengumumanPegawai() {
                                 key={index}
                                 className="relative border rounded-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300 bg-white"
                             >
-                                {/* Badge "New" */}
                                 {announcement.isNew && (
                                     <div className="absolute top-4 right-4 bg-redstat text-white text-xs px-2 py-1 rounded-full">
                                         New
@@ -50,7 +49,6 @@ function PengumumanPegawai() {
                                             {announcement.category}
                                         </span>
                                     </p>
-                                    {/* CTA Button */}
                                     <button
                                         className="px-4 py-2 bg-tertiary text-white font-medium rounded-lg hover:bg-[#133d37] transition-colors duration-300"
                                     >
