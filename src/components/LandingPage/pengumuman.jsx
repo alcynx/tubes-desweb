@@ -16,7 +16,7 @@ const AnnouncementsSection = () => {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-10 p-10 -mt-2">
         {announcements.length > 0 ? (
           announcements
-            .slice(0, 3) // Mengambil 3 data pertama
+            .slice(0, 3) 
             .map((announcement, index) => (
               <div
                 key={index}
