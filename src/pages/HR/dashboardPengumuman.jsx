@@ -5,9 +5,9 @@ import AnnouncementForm from "../../components/Pengumuman/formPengumuman";
 
 const AnnouncementsPage = () => {
   return (
-    <div className="flex min-h-screen">
+    <div className="flex">
         <Sidebar />
-        <div className="w-full p-8">
+        <div className="w-full p-8 ml-64">
             <HeaderHr />
             <h1 className="text-green-900 font-bold mb-4 mt-8">PENGUMUMAN</h1>
             <AnnouncementForm />

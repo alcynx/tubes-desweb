@@ -29,7 +29,7 @@ const Pengajuan = () => {
   return (
     <div className="flex">
       <SideBar />
-      <main className="flex-1 p-10">
+      <main className="flex-1 p-10 ml-64">
         <Header />
         <div className="p-5">
           <h1 className="text-2xl font-bold mb-5">Daftar Pengajuan Pegawai</h1>

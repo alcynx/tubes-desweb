@@ -12,9 +12,9 @@ const PublishedAnnouncementsPage = () => {
   const published = announcements.filter((announcement) => announcement.status === "Published");
 
   return (
-    <div className="flex min-h-screen">
+    <div className="flex ">
       <Sidebar />
-      <div className="w-full p-8">
+      <div className="w-full p-8 ml-64">
         <HeaderHr />
         <h1 className="text-[#16423C] font-bold text-2xl mb-8 mt-8">Pengumuman</h1>
 

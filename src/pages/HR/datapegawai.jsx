@@ -24,7 +24,7 @@ function DataPegawai() {
     return (
         <div className="flex">
             <Sidebar />
-            <div className="flex-1 p-6">
+            <div className="flex-1 p-6 ml-64">
                 <HeaderHR />
                 <section className="p-6 rounded-lg my-6">
                     <div className="flex justify-between items-center mb-4">

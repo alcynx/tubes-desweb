@@ -51,12 +51,12 @@ const Dashboard = () => {
     };
 
   return (
-    <div className="flex h-screen bg-white">
+    <div className="flex">
       {/* Sidebar */}
       <Sidebar />
 
       {/* Main Content */}
-      <main className="flex-1 p-6 ">
+      <main className="flex-1 p-6 ml-64">
         {/* Header */}
         <HeaderHR />
 
@@ -93,15 +93,6 @@ const Dashboard = () => {
             </button>
             {isFormVisible && <FormComponent isVisible={isFormVisible} onClose={handleCloseForm} />}
 
-            <div className='flex space-x-4 '>
-                 {/* Unduh Button */}
-                 <button className="flex text-4xl text-tertiary p-2 hover:bg-gray-100">
-                 <MdEditSquare />
-                </button>
-                <button className="flex text-3xl p-2 space-x-2 text-tertiary hover:bg-gray-100">
-                <FaTrash />
-                </button>
-            </div>
         </section>
 
         <section className="pt-5">
