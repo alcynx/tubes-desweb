@@ -19,11 +19,11 @@ function TablePegawai({ data, onRowClick }) {
                         className="text-left border-b cursor-pointer hover:bg-gray-100"
                         onClick={() => onRowClick(pegawai)}
                     >
-                        <td className="p-2">{pegawai.nama}</td>
-                        <td className="p-2">{pegawai.posisi}</td>
-                        <td className="p-2">{pegawai.status}</td>
-                        <td className="p-2">{pegawai.id}</td>
-                        <td className="p-2">{pegawai.sisaCuti}</td>
+                        <td className="p-2 text-secondary">{pegawai.nama}</td>
+                        <td className="p-2 text-secondary">{pegawai.posisi}</td>
+                        <td className="p-2 text-secondary">{pegawai.status}</td>
+                        <td className="p-2 text-secondary">{pegawai.id}</td>
+                        <td className="p-2 text-secondary">{pegawai.sisaCuti}</td>
                     </tr>
                 ))}
             </tbody>

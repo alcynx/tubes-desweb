@@ -129,18 +129,18 @@ const Pengajuan = () => {
           <tbody>
             {approvedList.map((pengajuan, index) => (
               <tr key={`approved-${index}`}>
-                <td className="p-3 text-left">{pengajuan.nama}</td>
-                <td className="p-3 text-left">{pengajuan.jenisPengajuan}</td>
-                <td className="p-3 text-left">{pengajuan.tanggalPengajuan}</td>
+                <td className="p-3 text-left text-secondary">{pengajuan.nama}</td>
+                <td className="p-3 text-left text-secondary">{pengajuan.jenisPengajuan}</td>
+                <td className="p-3 text-left text-secondary">{pengajuan.tanggalPengajuan}</td>
                 <td className="p-3 text-left text-green-600">Disetujui</td>
               </tr>
             ))}
 
             {rejectedList.map((pengajuan, index) => (
               <tr key={`rejected-${index}`}>
-                <td className="p-3 text-left">{pengajuan.nama}</td>
-                <td className="p-3 text-left">{pengajuan.jenisPengajuan}</td>
-                <td className="p-3 text-left">{pengajuan.tanggalPengajuan}</td>
+                <td className="p-3 text-left text-secondary">{pengajuan.nama}</td>
+                <td className="p-3 text-left text-secondary">{pengajuan.jenisPengajuan}</td>
+                <td className="p-3 text-left text-secondary">{pengajuan.tanggalPengajuan}</td>
                 <td className="p-3 text-left text-red-600">Ditolak</td>
               </tr>
             ))}

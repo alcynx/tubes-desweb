@@ -9,7 +9,7 @@ const AnnouncementsPage = () => {
         <Sidebar />
         <div className="w-full p-8 ml-64 font-poppins">
             <HeaderHr />
-            <h1 className="text-green-900 font-bold mb-4 mt-8">PENGUMUMAN</h1>
+            <h1 className="text-2xl font-bold text-tertiary mb-6 text-center">Pengumuman</h1>
             <AnnouncementForm />
         </div>
     </div>         
