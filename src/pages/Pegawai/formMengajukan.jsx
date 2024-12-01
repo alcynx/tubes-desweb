@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import SidebarPegawai from "../../components/DashboardPegawai/SidebarPegawai";
+import HeaderPegawai from "../../components/DashboardPegawai/HeaderPegawai";
 
 const FormPengajuan = ({ onSubmit }) => {
   const [formData, setFormData] = useState({
@@ -71,9 +72,10 @@ const FormPengajuan = ({ onSubmit }) => {
     <div className="flex">
       <SidebarPegawai />
 
-      <div className="flex-1 p-10 bg-gray-100 ml-64 font-poppins">
-        <div className="max-w-lg mx-auto bg-white p-6 rounded-lg shadow-md border border-[#417D7A]">
-          <h1 className="text-2xl font-bold text-gray-700 mb-6 text-center">Form Pengajuan</h1>
+      <div className="flex-1 p-10 ml-64 font-poppins">
+      <HeaderPegawai />
+        <div className="w-full pt-5 bg-white p-6 rounded-lg ">
+          <h1 className="text-2xl font-bold text-tertiary mb-6 text-center">Form Pengajuan</h1>
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
               <label className="block font-medium text-gray-600 mb-2">Nama</label>
