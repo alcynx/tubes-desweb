@@ -2,14 +2,20 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import { AttendanceProvider } from './AttendanceContext';
-import { EmployeeAttendanceProvider } from './components/attendanceData';
+import { AttendanceProvider } from './components/DashboardHr/AttendanceContext'; 
+import { EmployeeAttendanceProvider } from './components/DashboardPegawai/attendanceData'; 
+import { AnnouncementsProvider } from './components/Pengumuman/AnnouncementsContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
-    <AttendanceProvider>
+    <React.StrictMode>
         <EmployeeAttendanceProvider>
-            <App />
+            <AttendanceProvider>
+                <AnnouncementsProvider>
+                    <App />
+                </AnnouncementsProvider>
+            </AttendanceProvider>
         </EmployeeAttendanceProvider>
-    </AttendanceProvider>
+    </React.StrictMode>
 );
