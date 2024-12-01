@@ -13,7 +13,7 @@ function PengumumanPegawai() {
     return (
         <div className="flex min-h-screen h-full font-poppins">
             <SidebarPegawai />
-            <div className="flex-1 p-6 ml-64">
+            <div className="flex-1 p-6 ml-64 font-poppins">
                 <HeaderPegawai />
                 <div className="mt-6">
                     <h1 className="text-3xl font-bold text-tertiary">

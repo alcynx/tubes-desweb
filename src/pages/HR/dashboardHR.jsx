@@ -65,7 +65,7 @@ function DashboardHr() {
     return (
         <div className="flex">
             <Sidebar />
-            <div className="flex-1 p-6 ml-64">
+            <div className="flex-1 p-6 ml-64 font-poppins">
                 <HeaderHR />
                 <section className="p-6 rounded-lg my-6">
                     <div className="flex justify-between items-center mb-4">
@@ -76,7 +76,6 @@ function DashboardHr() {
                     </div>
 
                     <div className="grid grid-cols-5 gap-4">
-                         {/* Total Karyawan */}
                         <div className="text-center flex flex-col items-left p-4 bg-white border border-[#417D7A] rounded-md shadow-sm">
                             <FaUser className="text-xl text-[#16423C] mb-2" /> 
                             <p className="text-gray-600 text-[#417D7A] text-left">Karyawan</p>

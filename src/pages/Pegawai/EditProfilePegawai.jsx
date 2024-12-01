@@ -40,7 +40,7 @@ function ProfilePage() {
   return (
     <div className="flex h-screen">
       <SidebarPegawai />
-      <div className="flex-1 p-6 ml-64">
+      <div className="flex-1 p-6 ml-64 font-poppins">
         <ProfileContent
           isEditing={isEditing}
           profileData={profileData}

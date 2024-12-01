@@ -38,7 +38,7 @@ function DashboardPe() {
     return (
         <div className="flex min-h-screen h-full font-poppins">
             <SidebarPegawai />
-            <div className="flex-1 p-6 ml-64">
+            <div className="flex-1 p-6 ml-64 font-poppins">
                 <HeaderPegawai />
 
                 <section className="p-6 rounded-lg bg-white">

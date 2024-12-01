@@ -8,7 +8,7 @@ import Footer from '../components/LandingPage/footer'
 
 const LandingPage = () => {
   return (
-    <div>
+    <div className='font-poppins'>
     <Header />
     <section id="home">
       <Home />
