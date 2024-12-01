@@ -4,6 +4,10 @@ import { useAnnouncements } from "../../components/Pengumuman/AnnouncementsConte
 const AnnouncementsSection = () => {
   const { announcements } = useAnnouncements();
 
+  const filteredAnnouncements = announcements
+    .filter((announcement) => announcement.status === "Published")
+    .slice(0, 3);
+
   return (
     <div className="max-w- font-poppins mx-auto py-12 px-4 sm:px-6 lg:px-8 -mt-7">
       <h2 className="text-center text-tertiary text-3xl font-extrabold text-gray-900 mb-2">
@@ -13,14 +17,17 @@ const AnnouncementsSection = () => {
         Temukan informasi terbaru dalam web pengumuman mengenai kepegawaian kini
       </p>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-10 p-10 -mt-2">
-        {announcements.length > 0 ? (
-          announcements
-            .slice(0, 3) 
-            .map((announcement, index) => (
+      <div className="flex justify-center">
+        <div
+          className={`grid ${
+            filteredAnnouncements.length < 3 ? "grid-cols-1 md:grid-cols-2" : "grid-cols-1 md:grid-cols-3"
+          } gap-10 p-10 -mt-2`}
+        >
+          {filteredAnnouncements.length > 0 ? (
+            filteredAnnouncements.map((announcement, index) => (
               <div
                 key={index}
-                className="border rounded-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300"
+                className="border rounded-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300 mx-auto"
               >
                 <img
                   src={announcement.image}
@@ -39,11 +46,12 @@ const AnnouncementsSection = () => {
                 </div>
               </div>
             ))
-        ) : (
-          <p className="text-center text-gray-500">
-            Tidak ada pengumuman yang tersedia.
-          </p>
-        )}
+          ) : (
+            <p className="text-center text-gray-500">
+              Tidak ada pengumuman yang tersedia.
+            </p>
+          )}
+        </div>
       </div>
     </div>
   );
