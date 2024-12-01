@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 const Sidebar = () => {
     return (
-        <aside className="w-64 bg-[#C4DAD2] min-h-screen p-5 flex flex-col justify-between">
+        <aside className="w-64 bg-[#C4DAD2] min-h-screen h-full p-5 flex flex-col justify-between">
             <div className="flex items-center mb-10">
                 <img src="/images/logo-dark.png" alt="Staffio Logo" className="w-16 h-16 object-contain" />
             </div>

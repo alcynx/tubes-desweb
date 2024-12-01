@@ -77,7 +77,7 @@ function DashboardHr() {
 
                     <div className="grid grid-cols-5 gap-4">
                          {/* Total Karyawan */}
-                         <div className="text-center flex flex-col items-left p-4 bg-white border border-[#417D7A] rounded-md shadow-sm">
+                        <div className="text-center flex flex-col items-left p-4 bg-white border border-[#417D7A] rounded-md shadow-sm">
                             <FaUser className="text-xl text-[#16423C] mb-2" /> 
                             <p className="text-gray-600 text-[#417D7A] text-left">Karyawan</p>
                             <p className="text-2xl font-bold text-[#16423C] text-left">{totalKaryawan}</p>

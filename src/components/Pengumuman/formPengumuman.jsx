@@ -7,10 +7,24 @@ const AnnouncementForm = () => {
   const [showModal, setShowModal] = useState(false);
   const { addAnnouncement } = useAnnouncements(); 
 
+  // Tambahkan state untuk menyimpan inputan form
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [date, setDate] = useState("");
   const [category, setCategory] = useState("umum");
+  const [image, setImage] = useState(null);
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+  
+    if (file) {
+      reader.onload = () => {
+        setImage(reader.result); 
+      };
+      reader.readAsDataURL(file);
+    }
+  };
 
   const handleStatusChange = (value) => {
     setStatus(value);
@@ -18,28 +32,44 @@ const AnnouncementForm = () => {
 
   const handleSimpan = (e) => {
     e.preventDefault();
+    if (!title || !description || !date) {
+      alert("Harap lengkapi semua bidang sebelum menyimpan.");
+      return;
+    }
     setShowModal(true);
   };
 
   const handleConfirm = () => {
     setShowModal(false);
-
+  
     const newAnnouncement = {
-      title: title, 
+      title: title,
       description: description,
-      date: date, 
-      category: category, 
-      status: status === "public" ? "Public" : "Draft",
+      date: date,
+      category: category,
+      image: image,
+      status: status === "public" ? "Published" : "Draft", // Simpan status
     };
-
+  
     addAnnouncement(newAnnouncement);
-
-    alert(`Pengumuman berhasil disimpan sebagai ${status === "public" ? "Public" : "Draft"}`);
+  
+    alert(`Pengumuman berhasil disimpan sebagai ${status === "public" ? "Published" : "Draft"}`);
+    handleReset(); // Reset form setelah penyimpanan
   };
-
+  
+  
   const handleCancel = () => {
     setShowModal(false);
   };
+
+  const handleReset = () => {
+    setTitle("");
+    setDescription("");
+    setDate("");
+    setCategory("umum");
+    setImage(null);
+    setStatus("public");
+};
 
   return (
     <form className="space-y-4">
@@ -48,7 +78,7 @@ const AnnouncementForm = () => {
         <input 
           type="text" 
           className="w-full border border border-[#16423C] rounded-[10px] p-2"
-          value={title} 
+          value={title}  
           onChange={(e) => setTitle(e.target.value)} 
         />
       </div>
@@ -56,9 +86,18 @@ const AnnouncementForm = () => {
         <label className="block text-[#417D7A] mb-4 mt-6">Deskripsi</label>
         <textarea 
           className="w-full border border border-[#16423C] rounded-[10px] p-2 h-24"
-          value={description}
+          value={description} 
           onChange={(e) => setDescription(e.target.value)} 
         ></textarea>
+      </div>
+      <div>
+        <label className="block text-[#417D7A] mb-4 mt-6">Gambar</label>
+        <input
+          type="file"
+          accept="image/*"
+          onChange={handleImageChange} 
+          className="w-full border border-[#16423C] rounded-[10px] p-2"
+        />
       </div>
       <div>
         <label className="block text-[#417D7A] mb-4 mt-6">Tanggal</label>
@@ -66,14 +105,14 @@ const AnnouncementForm = () => {
           type="date" 
           className="w-full border border border-[#16423C] rounded-[10px] p-2 text-[#16423C]"
           value={date} 
-          onChange={(e) => setDate(e.target.value)} 
+          onChange={(e) => setDate(e.target.value)}
         />
       </div>
       <div>
         <label className="block text-[#417D7A] mb-4 mt-6">Kategori</label>
         <select 
           className="w-full border border-[#16423C] rounded-[10px] p-2 text-[#16423C]"
-          value={category} 
+          value={category}  
           onChange={(e) => setCategory(e.target.value)} 
         >
           <option value="kebijakan">Kebijakan</option>
@@ -105,7 +144,12 @@ const AnnouncementForm = () => {
         </div>
       </div>
       <div className="flex justify-end space-x-4 mt-6">
-        <button type="reset" className="bg-[#E0223F] text-white rounded-[60px] px-4 py-2">Batal</button>
+        <button 
+          type="button" className="bg-[#E0223F] text-white rounded-[60px] px-4 py-2"
+          onClick={handleReset}
+        >
+          Batal
+        </button>
         <button
           type="button"
           className="bg-[#C4DAD2] text-[#16423C] rounded-[60px] px-4 py-2"
